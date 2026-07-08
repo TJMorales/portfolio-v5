@@ -21,7 +21,7 @@
   }
 
   /* full-bleed parallax dividers: transform only */
-  var pls = document.querySelectorAll('.parallax img');
+  var pls = document.querySelectorAll('.bleed img');
   function parallax(){
     if (reduced) return;
     var vh = window.innerHeight;
@@ -33,8 +33,59 @@
     });
   }
 
-  window.addEventListener('scroll', function(){ progress(); drift(); parallax(); }, { passive: true });
-  progress(); parallax();
+  /* HMW question: words fill with scroll */
+  var hmw = document.querySelector('.hmw');
+  var words = hmw ? hmw.querySelectorAll('.w') : [];
+  function wordfill(){
+    if (reduced || !hmw) return;
+    var r = hmw.getBoundingClientRect();
+    var vh = window.innerHeight;
+    var p = Math.min(1, Math.max(0, (vh * 0.82 - r.top) / (vh * 0.6)));
+    var n = Math.round(p * words.length);
+    words.forEach(function(w, i){ w.classList.toggle('on', i < n); });
+  }
+
+  /* ghost numerals drift slower than the page */
+  var ghosts = document.querySelectorAll('.ghost');
+  function ghostDrift(){
+    if (reduced) return;
+    ghosts.forEach(function(g){
+      var r = g.parentElement.getBoundingClientRect();
+      g.style.transform = 'translateY(' + (r.top * -0.12) + 'px)';
+    });
+  }
+
+  window.addEventListener('scroll', function(){ progress(); drift(); parallax(); wordfill(); ghostDrift(); }, { passive: true });
+  progress(); parallax(); wordfill(); ghostDrift();
+
+  /* impact stats count up when they land */
+  function countUp(el){
+    var raw = el.getAttribute('data-val');
+    var m = raw.match(/^(\d+(?:\.\d+)?)(.*)$/);
+    if (!m) { el.textContent = raw; return; }
+    var target = parseFloat(m[1]), suffix = m[2];
+    var dec = (m[1].split('.')[1] || '').length;
+    var t0 = null;
+    function tick(t){
+      if (!t0) t0 = t;
+      var p = Math.min(1, (t - t0) / 1200);
+      var e = 1 - Math.pow(1 - p, 3);
+      el.textContent = (target * e).toFixed(dec) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  var stats = document.querySelectorAll('.impact-stats b[data-val]');
+  if (reduced || !('IntersectionObserver' in window)) {
+    stats.forEach(function(s){ s.textContent = s.getAttribute('data-val'); });
+  } else {
+    var statObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { countUp(e.target); statObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.5 });
+    stats.forEach(function(s){ statObs.observe(s); });
+  }
 
   /* wayfinding rail */
   var rail = document.querySelector('.rail');
