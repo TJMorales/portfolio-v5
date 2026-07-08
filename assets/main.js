@@ -20,8 +20,21 @@
     });
   }
 
-  window.addEventListener('scroll', function(){ progress(); drift(); }, { passive: true });
-  progress();
+  /* full-bleed parallax dividers: transform only */
+  var pls = document.querySelectorAll('.parallax img');
+  function parallax(){
+    if (reduced) return;
+    var vh = window.innerHeight;
+    pls.forEach(function(im){
+      var r = im.parentElement.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      var p = (r.top + r.height / 2 - vh / 2) / vh;
+      im.style.transform = 'translateY(' + (p * -10) + '%)';
+    });
+  }
+
+  window.addEventListener('scroll', function(){ progress(); drift(); parallax(); }, { passive: true });
+  progress(); parallax();
 
   /* wayfinding rail */
   var rail = document.querySelector('.rail');
