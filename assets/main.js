@@ -26,12 +26,18 @@
     if (reduced) return;
     var vh = window.innerHeight;
     pls.forEach(function(im){
-      var r = im.parentElement.getBoundingClientRect();
+      var fr = im.parentElement;
+      var r = fr.getBoundingClientRect();
       if (r.bottom < 0 || r.top > vh) return;
-      var p = (r.top + r.height / 2 - vh / 2) / vh;
-      im.style.transform = 'translateY(' + (p * -10) + '%)';
+      var overflow = im.offsetHeight - fr.offsetHeight;
+      if (overflow <= 0){ im.style.transform = 'translateY(0)'; return; }
+      var prog = (vh - r.top) / (vh + r.height);
+      prog = prog < 0 ? 0 : prog > 1 ? 1 : prog;
+      im.style.transform = 'translateY(' + (-overflow * prog).toFixed(1) + 'px)';
     });
   }
+  pls.forEach(function(im){ im.addEventListener('load', parallax); });
+  window.addEventListener('load', parallax);
 
   /* HMW question: words fill with scroll */
   var hmw = document.querySelector('.hmw');
