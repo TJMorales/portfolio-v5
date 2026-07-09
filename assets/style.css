@@ -27,8 +27,9 @@ body{
   font-size:17px;
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+  overflow-x:clip;
 }
+html{overflow-x:clip}
 ::selection{background:var(--ink);color:var(--paper)}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
@@ -329,8 +330,7 @@ footer .colors i:nth-child(4){background:var(--teal)}
 .move .imgs.layer figure:nth-child(1){width:78%}
 .move .imgs.layer figure:nth-child(2){position:absolute;right:0;bottom:-10%;width:52%}
 .move .imgs.layer figure:nth-child(2) img{outline:5px solid var(--paper);border-radius:2px}
-.move .imgs.artifact figure{aspect-ratio:3/2;overflow:hidden;border-radius:2px;filter:drop-shadow(0 28px 56px rgba(16,16,16,.16))}
-.move .imgs.artifact img{width:100%;height:100%;object-fit:cover;object-position:top;filter:none}
+.move .imgs.artifact img{width:auto;max-width:100%;height:auto;max-height:82vh;display:block;margin:0 auto}
 .move .imgs.big img{width:110%;max-width:none;margin-left:-5%}
 .move .imgs.small img{width:90%;margin:0 auto}
 .move .imgs figure{overflow:visible}

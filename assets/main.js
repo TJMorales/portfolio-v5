@@ -13,8 +13,10 @@
   var shifts = document.querySelectorAll('[data-shift]');
   function drift(){
     if (reduced) return;
+    var narrow = window.innerWidth <= 1024;
     var y = window.scrollY;
     shifts.forEach(function(el){
+      if (narrow){ el.style.transform = ''; return; }
       var f = parseFloat(el.getAttribute('data-shift'));
       el.style.transform = 'translateX(' + (y * f * 0.08) + 'px)';
     });
@@ -62,6 +64,7 @@
   }
 
   window.addEventListener('scroll', function(){ progress(); drift(); parallax(); wordfill(); ghostDrift(); }, { passive: true });
+  window.addEventListener('resize', function(){ drift(); parallax(); }, { passive: true });
   progress(); parallax(); wordfill(); ghostDrift();
 
   /* impact stats count up when they land */
