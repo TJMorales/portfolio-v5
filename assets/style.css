@@ -286,7 +286,7 @@ footer .colors i:nth-child(4){background:var(--teal)}
 .chapter>*{position:relative;z-index:1}
 .chero .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-60);margin-bottom:24px;display:flex;gap:22px;align-items:baseline}
 .chero .eyebrow i{width:10px;height:10px;border-radius:50%;background:var(--c);display:inline-block;font-style:normal}
-.chero h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,9.5vw,140px);line-height:.94;letter-spacing:-.02em;max-width:12ch;text-wrap:balance;overflow-wrap:anywhere}
+.chero h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,9.5vw,140px);line-height:.94;letter-spacing:-.02em;max-width:12ch;text-wrap:balance}
 .chero h1 .row{display:block;overflow:hidden}
 .chero h1 .row span{display:inline-block;animation:rise 1s var(--ease) both}
 .chero h1 .row:nth-child(2) span{animation-delay:.12s}
@@ -306,14 +306,14 @@ footer .colors i:nth-child(4){background:var(--teal)}
 .kick{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-60);display:flex;align-items:baseline;gap:20px;margin-bottom:clamp(28px,5vh,48px)}
 .kick::after{content:'';flex:1;height:1px;background:var(--ink-12)}
 .chapter .kick.later{margin-top:clamp(48px,7vh,80px)}
-.bigline{font-family:var(--display);font-weight:800;font-size:clamp(26px,4.6vw,66px);line-height:1.05;letter-spacing:-.015em;max-width:20ch;margin-bottom:26px;overflow-wrap:anywhere}
+.bigline{font-family:var(--display);font-weight:800;font-size:clamp(26px,4.6vw,66px);line-height:1.05;letter-spacing:-.015em;max-width:20ch;margin-bottom:26px}
 .bigline em{font-style:normal;color:var(--c-ink)}
 .lede{font-size:clamp(19px,2vw,27px);line-height:1.55;max-width:48ch;color:var(--ink-60)}
 .lede strong{color:var(--ink);font-weight:500}
 
 /* HMW: the pivot question, scroll-filled word by word */
 .hmw-ch{border-top:1px solid var(--ink-12);border-bottom:1px solid var(--ink-12)}
-.hmw{font-family:var(--display);font-weight:800;font-size:clamp(26px,5vw,72px);line-height:1.16;letter-spacing:-.015em;max-width:22ch;overflow-wrap:anywhere}
+.hmw{font-family:var(--display);font-weight:800;font-size:clamp(26px,5vw,72px);line-height:1.16;letter-spacing:-.015em;max-width:22ch}
 .hmw .w{color:var(--ink-12);transition:color .45s var(--ease)}
 .hmw .w.on{color:var(--ink)}
 .hmw .w.q{transition-delay:.05s}
@@ -323,7 +323,7 @@ footer .colors i:nth-child(4){background:var(--teal)}
 /* moves: full-screen center splits, frameless floating imagery */
 .move{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:clamp(28px,4vw,64px);min-height:100svh;align-items:center;padding:clamp(48px,7vh,80px) var(--gutter);position:relative}
 .move .mnum{position:absolute;left:var(--gutter);top:clamp(28px,5vh,56px);font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--c-ink)}
-.move h3{font-family:var(--display);font-weight:800;font-size:clamp(26px,3.6vw,54px);line-height:1;letter-spacing:-.015em;margin-bottom:20px;overflow-wrap:anywhere}
+.move h3{font-family:var(--display);font-weight:800;font-size:clamp(26px,3.6vw,54px);line-height:1;letter-spacing:-.015em;margin-bottom:20px}
 .move p{font-size:clamp(17px,1.5vw,20px);line-height:1.68;color:var(--ink-60);max-width:44ch}
 .move .imgs{display:grid;gap:clamp(18px,2.5vw,30px)}
 .move .imgs.layer{display:block;position:relative}
@@ -359,7 +359,7 @@ footer .colors i:nth-child(4){background:var(--teal)}
 .team li b{color:var(--ink);font-weight:500}
 @media(max-width:640px){.team{columns:1}}
 .next{display:flex;flex-direction:column;justify-content:center;min-height:78svh;border-top:1px solid var(--ink-12);padding:clamp(56px,9vh,104px) var(--gutter)}
-.next h2{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(28px,8.5vw,124px);line-height:.95;letter-spacing:-.02em;transition:color .4s var(--ease);text-wrap:balance;overflow-wrap:anywhere}
+.next h2{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(28px,8.5vw,124px);line-height:.95;letter-spacing:-.02em;transition:color .4s var(--ease);text-wrap:balance}
 .next:hover h2,.next:focus-visible h2{color:var(--nc)}
 .next .go{display:inline-flex;align-items:center;gap:10px;margin-top:28px;font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase}
 .next .go .arrow{transition:transform .4s var(--ease)}
@@ -368,13 +368,14 @@ footer .colors i:nth-child(4){background:var(--teal)}
 .p-teal{--c:var(--teal);--c-ink:var(--teal-ink)}
 .p-rose{--c:var(--rose);--c-ink:var(--rose)}
 
-@media(max-width:600px){
-  .chero h1{font-size:clamp(24px,7.6vw,40px)}
-  .bigline{font-size:clamp(22px,5.4vw,36px)}
-  .hmw{font-size:clamp(22px,5.4vw,36px)}
-  .move h3{font-size:clamp(20px,5.4vw,30px)}
-  .next h2{font-size:clamp(22px,7vw,40px)}
-  .impact-stats b{font-size:clamp(46px,12vw,80px)}
-  .case h2{font-size:clamp(24px,6vw,44px);overflow-wrap:anywhere}
+@media(max-width:768px){
+  .hero h1{font-size:clamp(44px,13.5vw,150px)}
+  .hero h1 .row.offset{padding-left:clamp(20px,9vw,120px)}
+  .chero h1{font-size:clamp(24px,7.4vw,88px)}
+  .case h2{font-size:clamp(24px,6vw,56px);margin-bottom:30px}
+  .bigline{font-size:clamp(22px,5vw,50px)}
+  .hmw{font-size:clamp(22px,5vw,54px)}
+  .move h3{font-size:clamp(18px,4.6vw,44px)}
+  .next h2{font-size:clamp(20px,6.5vw,60px)}
+  .impact-stats b{font-size:clamp(46px,11vw,88px)}
 }
-@media(max-width:340px){.hero h1{font-size:52px}}
