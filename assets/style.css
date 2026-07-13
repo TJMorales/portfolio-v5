@@ -342,19 +342,21 @@ footer .colors i:nth-child(4){background:var(--teal)}
 .move .imgs figure:hover img{transform:translateY(-8px)}
 .move:nth-of-type(even){grid-template-columns:minmax(0,1.28fr) minmax(0,.72fr)}
 .move:nth-of-type(even) .imgs{order:-1}
-/* homepage move: compact staggered gallery, fits one viewport beside the text */
-.move .showcase{display:flex;flex-direction:column;gap:clamp(12px,2vh,20px);width:100%;align-items:flex-start}
-.move .showcase figure{margin:0;position:relative;max-width:100%}
-.move .showcase figure:nth-child(2){align-self:flex-end}
-.move .showcase figure:nth-child(3){align-self:center}
-.move .showcase figcaption{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--c-ink);margin-bottom:7px;display:flex;align-items:center;gap:8px}
-.move .showcase figcaption::before{content:'';width:18px;height:1px;background:var(--c)}
-.move .showcase figure img{height:clamp(116px,19vh,200px);width:auto;max-width:100%;display:block;border:1px solid var(--ink-12);box-shadow:0 20px 42px -16px rgba(16,16,16,.30);transition:transform .5s var(--ease)}
-.move .showcase figure:hover img{transform:translateY(-5px)}
+/* homepage move: cascading cards, fits one viewport beside the text */
+.move .showcase{display:flex;flex-direction:column;width:100%;align-items:flex-start}
+.move .showcase figure{margin:0;position:relative}
+.move .showcase figure:nth-child(1){align-self:flex-start;z-index:3}
+.move .showcase figure:nth-child(2){align-self:center;z-index:2}
+.move .showcase figure:nth-child(3){align-self:flex-end;z-index:1}
+.move .showcase figure:nth-child(n+2){margin-top:clamp(-108px,-12vh,-76px)}
+.move .showcase figure img{height:clamp(150px,23vh,232px);width:auto;max-width:100%;display:block;border:1px solid var(--ink-12);box-shadow:0 26px 54px -18px rgba(16,16,16,.38);transition:transform .55s var(--ease)}
+.move .showcase:hover figure:nth-child(2){transform:translateY(7%)}
+.move .showcase:hover figure:nth-child(3){transform:translateY(15%)}
 @media(max-width:860px){
-  .move .showcase{gap:18px}
-  .move .showcase figure,.move .showcase figure:nth-child(2),.move .showcase figure:nth-child(3){align-self:stretch}
+  .move .showcase figure,.move .showcase figure:nth-child(1),.move .showcase figure:nth-child(2),.move .showcase figure:nth-child(3){align-self:stretch;z-index:auto}
+  .move .showcase figure:nth-child(n+2){margin-top:16px}
   .move .showcase figure img{height:auto;width:100%}
+  .move .showcase:hover figure{transform:none}
 }
 @media(max-width:860px){
   .move,.move:nth-of-type(even){grid-template-columns:1fr;min-height:auto;padding-top:clamp(72px,12vh,110px)}
