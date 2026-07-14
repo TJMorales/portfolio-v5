@@ -46,11 +46,13 @@
     ctx.globalAlpha=1; return;
   }
 
-  var forming = true, t0 = null, FORM = 1900, HOLD = 300, ended = false;
+  var forming = true, t0 = null, FORM = 1900, ended = false;
   function endLoad(){ if(ended) return; ended = true; forming = false;
+    clearTimeout(failsafe);
     document.documentElement.classList.remove('loading');
-    if(pct){ pct.classList.add('hide'); setTimeout(function(){ if(pct.parentNode) pct.parentNode.removeChild(pct); }, 700); } }
-  var failsafe = setTimeout(endLoad, 5200);           // never trap the site
+    if(pct){ pct.textContent = '100%'; pct.classList.add('hide'); setTimeout(function(){ if(pct.parentNode) pct.parentNode.removeChild(pct); }, 700); } }
+  var failsafe = setTimeout(endLoad, 4200);           // backstop only
+  setTimeout(endLoad, FORM + 120);                    // reveal right at 100%
   var ease = function(x){ return 1 - Math.pow(1-x,3); };
 
   function frame(t){
@@ -73,7 +75,6 @@
     ctx.globalAlpha = 1; boost *= 0.93;
     if (forming){
       if (pct) pct.textContent = Math.round(Math.min(1, el/FORM)*100) + '%';
-      if (el >= FORM + HOLD){ clearTimeout(failsafe); endLoad(); }
     }
     requestAnimationFrame(frame);
   }
