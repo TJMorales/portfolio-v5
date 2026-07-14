@@ -235,12 +235,15 @@ section{padding:clamp(80px,14vh,160px) var(--gutter)}
   margin-bottom:clamp(32px,6vh,60px);
 }
 .contact h2 a{
-  background-image:linear-gradient(90deg,var(--violet),var(--rose),var(--lime),var(--teal));
+  background-image:linear-gradient(90deg,var(--violet),var(--rose),var(--lime),var(--teal),var(--violet));
+  background-size:220% 100%;
   -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:currentColor;
-  transition:color .5s var(--ease);
+  color:transparent;-webkit-text-fill-color:transparent;
+  animation:flowgrad 9s linear infinite;
 }
-.contact h2 a:hover,.contact h2 a:focus-visible{color:transparent;-webkit-text-fill-color:transparent}
+.contact h2 a:hover,.contact h2 a:focus-visible{animation-duration:3.2s}
+@keyframes flowgrad{from{background-position:0% 50%}to{background-position:220% 50%}}
+@media(prefers-reduced-motion:reduce){.contact h2 a{animation:none;background-position:0 50%}}
 .contact .row{display:flex;gap:clamp(24px,4vw,56px);flex-wrap:wrap;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase}
 .contact .row a{padding-bottom:4px;border-bottom:1px solid var(--ink)}
 .contact .row a:hover{color:var(--teal-ink);border-color:var(--teal-ink)}
@@ -283,12 +286,12 @@ footer .colors i:nth-child(4){background:var(--teal)}
 
 /* ---------- case study pages: full-screen chapters ---------- */
 .chapter{min-height:100svh;display:flex;flex-direction:column;justify-content:center;position:relative;padding:clamp(56px,9vh,104px) var(--gutter)}
-.chero{justify-content:flex-start;min-height:auto;padding-top:clamp(72px,8vh,100px);padding-bottom:clamp(28px,4vh,52px)}
+.chero{justify-content:flex-start;min-height:auto;padding-top:clamp(58px,6vh,80px);padding-bottom:clamp(24px,3.5vh,44px)}
 .ghost{position:absolute;right:-1vw;top:4vh;font-family:var(--display);font-weight:800;font-size:clamp(160px,32vw,540px);line-height:1;color:transparent;-webkit-text-stroke:3px var(--c);opacity:.18;user-select:none;pointer-events:none;z-index:0}
 .chapter>*{position:relative;z-index:1}
 .chero .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-60);margin-bottom:16px;display:flex;gap:22px;align-items:baseline}
 .chero .eyebrow i{width:10px;height:10px;border-radius:50%;background:var(--c);display:inline-block;font-style:normal}
-.chero h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,9.5vw,140px);line-height:.94;letter-spacing:-.02em;max-width:12ch;text-wrap:balance}
+.chero h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,8vw,116px);line-height:.92;letter-spacing:-.02em;max-width:12ch;text-wrap:balance}
 .chero h1 .row{display:block;overflow:hidden}
 .chero h1 .row span{display:inline-block;animation:rise 1s var(--ease) both}
 .chero h1 .row:nth-child(2) span{animation-delay:.12s}
@@ -340,6 +343,9 @@ footer .colors i:nth-child(4){background:var(--teal)}
 .move .imgs,.move .imgs figure,.move .imgs img{max-width:100%}
 .move .imgs img{width:100%;display:block;filter:drop-shadow(0 28px 56px rgba(16,16,16,.16));transition:transform .9s var(--ease)}
 .move .imgs figure:hover img{transform:translateY(-8px)}
+.move .imgs video{width:100%;display:block;filter:drop-shadow(0 28px 56px rgba(16,16,16,.16));transition:transform .9s var(--ease)}
+.move .imgs.small video{width:90%;margin:0 auto}
+.move .imgs figure:hover video{transform:translateY(-8px)}
 .move:nth-of-type(even){grid-template-columns:minmax(0,1.28fr) minmax(0,.72fr)}
 .move:nth-of-type(even) .imgs{order:-1}
 /* homepage move: cascading cards, fits one viewport beside the text */
@@ -350,8 +356,9 @@ footer .colors i:nth-child(4){background:var(--teal)}
 .move .showcase figure:nth-child(3){align-self:flex-end;z-index:1}
 .move .showcase figure:nth-child(n+2){margin-top:clamp(-108px,-12vh,-76px)}
 .move .showcase figure img{height:clamp(150px,23vh,232px);width:auto;max-width:100%;display:block;border:1px solid var(--ink-12);box-shadow:0 26px 54px -18px rgba(16,16,16,.38);transition:transform .55s var(--ease)}
-.move .showcase:hover figure:nth-child(2){transform:translateY(7%)}
-.move .showcase:hover figure:nth-child(3){transform:translateY(15%)}
+.move .showcase figure{transition:transform .45s var(--ease)}
+.move .showcase figure:hover{z-index:20}
+.move .showcase figure:hover img{transform:translateY(-6px)}
 @media(max-width:860px){
   .move .showcase figure,.move .showcase figure:nth-child(1),.move .showcase figure:nth-child(2),.move .showcase figure:nth-child(3){align-self:stretch;z-index:auto}
   .move .showcase figure:nth-child(n+2){margin-top:16px}
@@ -363,7 +370,7 @@ footer .colors i:nth-child(4){background:var(--teal)}
   .move .imgs,.move:nth-of-type(even) .imgs{order:2}
   .move .imgs.layer figure:nth-child(1){width:90%}
   .move .imgs.layer figure:nth-child(2){position:static;width:64%;margin:-8% 0 0 auto}
-  .move .imgs.big img,.move .imgs.small img{width:100%;margin:0}
+  .move .imgs.big img,.move .imgs.small img,.move .imgs.big video,.move .imgs.small video{width:100%;margin:0}
 }
 
 /* impact: numbers that land */
