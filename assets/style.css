@@ -404,3 +404,10 @@ footer .colors i:nth-child(4){background:var(--teal)}
   .next h2{font-size:clamp(20px,6.5vw,60px)}
   .impact-stats b{font-size:clamp(46px,11vw,88px)}
 }
+
+/* particle vortex: loading screen + hero background */
+.loader{position:fixed;inset:0;z-index:9999;background:var(--paper);transition:opacity .8s ease}
+.loader canvas{width:100%;height:100%;display:block}
+.loader.hide{opacity:0;pointer-events:none}
+.vortex{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.hero .scrollcue,.hero h1,.hero .meta{position:relative;z-index:1}
