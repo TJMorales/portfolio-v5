@@ -411,3 +411,8 @@ footer .colors i:nth-child(4){background:var(--teal)}
 .loadpct{position:fixed;top:clamp(84px,14vh,150px);right:var(--gutter);z-index:60;font-family:var(--mono);font-weight:300;font-size:clamp(40px,7vw,104px);letter-spacing:-.02em;color:var(--ink);transition:opacity .6s ease;pointer-events:none;font-variant-numeric:tabular-nums}
 .loadpct.hide{opacity:0}
 @media(prefers-reduced-motion:reduce){.loadpct{display:none}}
+/* loading gate: page hidden until the vortex finishes forming */
+html.loading body{overflow:hidden}
+nav,.hero .scrollcue,.hero .meta{transition:opacity .9s ease}
+html.loading nav,html.loading .hero .scrollcue,html.loading .hero .meta{opacity:0}
+html.loading .hero h1 .row span{animation-play-state:paused}

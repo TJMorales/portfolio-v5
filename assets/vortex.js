@@ -36,6 +36,8 @@
   }, {passive:true});
 
   if (reduced){
+    document.documentElement.classList.remove('loading');
+    if(pct && pct.parentNode) pct.parentNode.removeChild(pct);
     ctx.clearRect(0,0,W,H);
     for (var i=0;i<parts.length;i++){ var p=parts[i];
       var x=cx+Math.cos(p.a)*p.r, y=cy+Math.sin(p.a)*p.r;
@@ -44,10 +46,9 @@
     ctx.globalAlpha=1; return;
   }
 
-  document.body.style.overflow = 'hidden';           // lock scroll while it forms
   var forming = true, t0 = null, FORM = 1900, HOLD = 300, ended = false;
   function endLoad(){ if(ended) return; ended = true; forming = false;
-    document.body.style.overflow = '';
+    document.documentElement.classList.remove('loading');
     if(pct){ pct.classList.add('hide'); setTimeout(function(){ if(pct.parentNode) pct.parentNode.removeChild(pct); }, 700); } }
   var failsafe = setTimeout(endLoad, 5200);           // never trap the site
   var ease = function(x){ return 1 - Math.pow(1-x,3); };
