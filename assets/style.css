@@ -408,6 +408,6 @@ footer .colors i:nth-child(4){background:var(--teal)}
 /* particle vortex: forming loading intro (behind hero copy) + counter */
 .vortex{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 .hero .scrollcue,.hero h1,.hero .meta{position:relative;z-index:1}
-.loadpct{position:fixed;top:clamp(84px,14vh,150px);right:var(--gutter);z-index:60;font-family:var(--mono);font-weight:500;font-size:clamp(40px,7vw,104px);letter-spacing:-.03em;color:var(--ink);transition:opacity .7s ease;pointer-events:none;font-variant-numeric:tabular-nums}
+.loadpct{position:fixed;top:clamp(84px,14vh,150px);right:var(--gutter);z-index:60;font-family:var(--mono);font-weight:300;font-size:clamp(40px,7vw,104px);letter-spacing:-.02em;color:var(--ink);transition:opacity .6s ease;pointer-events:none;font-variant-numeric:tabular-nums}
 .loadpct.hide{opacity:0}
 @media(prefers-reduced-motion:reduce){.loadpct{display:none}}

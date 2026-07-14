@@ -47,7 +47,8 @@
   document.body.style.overflow = 'hidden';           // lock scroll while it forms
   var forming = true, t0 = null, FORM = 1900, HOLD = 300, ended = false;
   function endLoad(){ if(ended) return; ended = true; forming = false;
-    document.body.style.overflow = ''; if(pct) pct.classList.add('hide'); }
+    document.body.style.overflow = '';
+    if(pct){ pct.classList.add('hide'); setTimeout(function(){ if(pct.parentNode) pct.parentNode.removeChild(pct); }, 700); } }
   var failsafe = setTimeout(endLoad, 5200);           // never trap the site
   var ease = function(x){ return 1 - Math.pow(1-x,3); };
 
