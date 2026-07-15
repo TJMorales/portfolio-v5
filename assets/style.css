@@ -359,6 +359,7 @@ footer .colors i:nth-child(4){background:var(--teal)}
 .move .imgs figure:hover img{transform:translateY(-8px)}
 .move .imgs video{width:100%;display:block;filter:drop-shadow(0 28px 56px rgba(16,16,16,.16));transition:transform .9s var(--ease)}
 .move .imgs.small video{width:90%;margin:0 auto}
+.move .imgs.portrait img{height:min(72svh,720px);width:auto;max-width:100%;margin:0 auto;display:block}
 .move .imgs figure:hover video{transform:translateY(-8px)}
 .move:nth-of-type(even){grid-template-columns:minmax(0,1.28fr) minmax(0,.72fr)}
 .move:nth-of-type(even) .imgs{order:-1}
