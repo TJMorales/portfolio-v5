@@ -156,3 +156,17 @@
   window.addEventListener('resize', check);
   check();
 })();
+
+/* dark mode toggle */
+(function(){
+  var b = document.getElementById('themeToggle'); if(!b) return;
+  var h = document.documentElement;
+  function sync(){ b.setAttribute('aria-pressed', h.getAttribute('data-theme')==='dark' ? 'true' : 'false'); }
+  b.addEventListener('click', function(){
+    var dark = h.getAttribute('data-theme')==='dark';
+    if (dark) h.removeAttribute('data-theme'); else h.setAttribute('data-theme','dark');
+    try{ localStorage.setItem('tjm-theme', dark ? 'light' : 'dark'); }catch(e){}
+    sync();
+  });
+  sync();
+})();
