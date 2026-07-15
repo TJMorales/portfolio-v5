@@ -11,12 +11,14 @@
   canvas.className = 'vortex'; canvas.setAttribute('aria-hidden','true');
   hero.insertBefore(canvas, hero.firstChild);           // sits behind the copy (copy is z-index:1)
   var ctx = canvas.getContext('2d');
-  var W,H,cx,cy,R,parts=[];
+  var W,H,cx,cy,R,hx,hy,tx,ty,parts=[];
   function resize(){
     var r = hero.getBoundingClientRect(); W = r.width; H = r.height;
     canvas.width = W*DPR; canvas.height = H*DPR; canvas.style.width = W+'px'; canvas.style.height = H+'px';
     ctx.setTransform(DPR,0,0,DPR,0,0);
-    R = Math.min(W,H)*0.34; cx = W*0.66; cy = H*0.40;
+    R = Math.min(W,H)*0.34; hx = W*0.66; hy = H*0.40;
+    if (cx===undefined){ cx = hx; cy = hy; }
+    tx = hx; ty = hy;
   }
   function init(){
     parts = []; var N = W<760 ? 300 : 560;
@@ -28,6 +30,14 @@
   }
   resize(); init();
   window.addEventListener('resize', function(){ resize(); init(); });
+
+  if (window.matchMedia('(pointer: fine)').matches){
+    hero.addEventListener('mousemove', function(e){
+      var r = hero.getBoundingClientRect();
+      tx = e.clientX - r.left; ty = e.clientY - r.top;
+    });
+    hero.addEventListener('mouseleave', function(){ tx = hx; ty = hy; });
+  }
 
   var boost = 0, last = window.scrollY;
   window.addEventListener('scroll', function(){
@@ -73,6 +83,8 @@
       ctx.beginPath(); ctx.arc(x, y, Math.max(0.2, cs), 0, 6.283); ctx.fill();
     }
     ctx.globalAlpha = 1; boost *= 0.93;
+    if (forming){ cx += (hx - cx)*0.08; cy += (hy - cy)*0.08; }
+    else { cx += (tx - cx)*0.055; cy += (ty - cy)*0.055; }
     if (forming){
       if (pct) pct.textContent = Math.round(Math.min(1, el/FORM)*100) + '%';
     }
