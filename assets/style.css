@@ -365,12 +365,12 @@ footer .colors i:nth-child(4){background:var(--teal)}
 .move:nth-of-type(even) .imgs{order:-1}
 /* homepage move: uniform cascading cards */
 .move .showcase{display:flex;flex-direction:column;width:100%;align-items:flex-start}
-.move .showcase figure{margin:0;position:relative;width:76%;aspect-ratio:16/10;overflow:hidden;background:var(--paper);border:1px solid var(--ink-12);box-shadow:0 30px 60px -18px rgba(16,16,16,.42);transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.move .showcase figure{margin:0;position:relative;width:92%;aspect-ratio:16/10;overflow:hidden;background:var(--paper);border:1px solid var(--ink-12);box-shadow:0 30px 60px -18px rgba(16,16,16,.42);transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
 .move .showcase figure img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
 .move .showcase figure:nth-child(1){z-index:3}
-.move .showcase figure:nth-child(2){margin-left:12%;margin-top:-22%;z-index:2}
-.move .showcase figure:nth-child(3){margin-left:24%;margin-top:-22%;z-index:1}
-.move .showcase figure:hover{z-index:20;transform:translateY(-8px) scale(1.015);box-shadow:0 44px 84px -20px rgba(16,16,16,.5)}
+.move .showcase figure:nth-child(2){margin-left:4%;margin-top:-26%;z-index:2}
+.move .showcase figure:nth-child(3){margin-left:8%;margin-top:-26%;z-index:1}
+.move .showcase figure:hover{z-index:20;transform:scale(1.32);box-shadow:0 54px 100px -22px rgba(16,16,16,.55)}
 @media(max-width:860px){
   .move .showcase figure,.move .showcase figure:nth-child(1),.move .showcase figure:nth-child(2),.move .showcase figure:nth-child(3){width:100%;margin-left:0;margin-top:0;z-index:auto;aspect-ratio:16/10}
   .move .showcase figure+figure{margin-top:16px}
