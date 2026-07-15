@@ -67,7 +67,7 @@
         ca = p.alpha*Math.min(1, el/500); // fade in
         sb = 1 + (1-e)*1.6;               // extra spin while forming
       }
-      p.a += (0.0055 + 0.021*(1-p.r/R))*sb;   // center faster, edges slower
+      p.a += (0.005225 + 0.01995*(1-p.r/R))*sb;   // center faster, edges slower (-5%)
       var x = cx + Math.cos(p.a)*cr, y = cy + Math.sin(p.a)*cr;
       ctx.globalAlpha = ca; ctx.fillStyle = p.col;
       ctx.beginPath(); ctx.arc(x, y, Math.max(0.2, cs), 0, 6.283); ctx.fill();
