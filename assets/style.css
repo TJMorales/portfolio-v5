@@ -458,8 +458,9 @@ html.has-cube .work>.case{display:none}
 
 /* theme toggle: b/w when off, brand color when on */
 .theme-toggle{width:20px;height:20px;border-radius:50%;border:1.5px solid currentColor;cursor:pointer;padding:0;
+  color:inherit;-webkit-appearance:none;appearance:none;
   background:linear-gradient(90deg,currentColor 50%,transparent 50%);
   transition:transform .4s var(--ease);flex:none}
 .theme-toggle:hover{transform:rotate(180deg)}
 html[data-theme="dark"] .theme-toggle{border-color:transparent;
-  background:conic-gradient(var(--violet),var(--rose),var(--lime),var(--teal),var(--violet))}
+  background:conic-gradient(var(--violet) 0 25%,var(--rose) 25% 50%,var(--lime) 50% 75%,var(--teal) 75% 100%)}
