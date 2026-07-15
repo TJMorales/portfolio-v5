@@ -36,13 +36,17 @@
   function progress(){
     var r = track.getBoundingClientRect();
     var total = r.height - stage.offsetHeight;
-    return Math.max(0, Math.min(1, -r.top / total)) * (N - 1);
+    var raw = Math.max(0, Math.min(1, -r.top / total)) * (N - 1);
+    var i = Math.floor(raw), f = raw - i;
+    f = f*f*f*(f*(f*6 - 15) + 10);            /* smootherstep: dwell on each face, quick transit */
+    return i + f;
   }
   function frame(){
     target = progress() * 90;
     cur += (target - cur) * 0.085;            /* eased in/out */
     if (Math.abs(target - cur) < 0.01) cur = target;
-    cube.style.transform = 'rotateX(' + cur + 'deg)';
+    var frac = (cur / 90) % 1, mid = Math.sin(frac * Math.PI);
+    cube.style.transform = 'scale(' + (1 - 0.16 * mid) + ') rotateX(' + cur + 'deg)';
     var idx = Math.min(N - 1, Math.round(cur / 90));
     if (idx !== hudIdx){ hudIdx = idx; hud.innerHTML = '<b>0' + (idx + 1) + '</b> / 0' + N; }
     requestAnimationFrame(frame);
