@@ -236,10 +236,11 @@ section{padding:clamp(80px,14vh,160px) var(--gutter)}
   background-image:linear-gradient(90deg,var(--violet),var(--rose),var(--lime),var(--teal),var(--violet));
   background-size:220% 100%;
   -webkit-background-clip:text;background-clip:text;
-  color:transparent;-webkit-text-fill-color:transparent;
-  animation:flowgrad 9s linear infinite;
+  color:var(--ink);-webkit-text-fill-color:var(--ink);
+  transition:color .45s var(--ease);
+  animation:flowgrad 10s linear infinite;
 }
-.contact h2 a:hover,.contact h2 a:focus-visible{animation-duration:3.2s}
+.contact h2 a:hover,.contact h2 a:focus-visible{color:transparent;-webkit-text-fill-color:transparent}
 @keyframes flowgrad{from{background-position:0% 50%}to{background-position:220% 50%}}
 @media(prefers-reduced-motion:reduce){.contact h2 a{animation:none;background-position:0 50%}}
 .contact .row{display:flex;gap:clamp(24px,4vw,56px);flex-wrap:wrap;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase}
