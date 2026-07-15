@@ -46,7 +46,7 @@
     cur += (target - cur) * 0.085;            /* eased in/out */
     if (Math.abs(target - cur) < 0.01) cur = target;
     var frac = (cur / 90) % 1, mid = Math.sin(frac * Math.PI);
-    scene.style.transform = 'scale(' + (1 - 0.10 * mid) + ')';
+    scene.style.transform = 'scale(' + (1 - 0.13 * mid) + ')';
     cube.style.transform = 'translateZ(' + (-tz) + 'px) rotateX(' + cur + 'deg)';
     var idx = Math.min(N - 1, Math.round(cur / 90));
     if (idx !== hudIdx){ hudIdx = idx; hud.innerHTML = '<b>0' + (idx + 1) + '</b> / 0' + N; }
