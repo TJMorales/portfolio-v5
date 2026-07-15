@@ -464,3 +464,21 @@ html.has-cube .work>.case{display:none}
 .theme-toggle:hover{transform:rotate(180deg)}
 html[data-theme="dark"] .theme-toggle{border-color:transparent;
   background:conic-gradient(var(--violet) 0 25%,var(--rose) 25% 50%,var(--lime) 50% 75%,var(--teal) 75% 100%)}
+
+/* more case studies: compact index, mirrors the clients list */
+.morecases{padding:clamp(56px,9vh,104px) var(--gutter);border-top:1px solid var(--ink-12)}
+.morecases ul{list-style:none}
+.morecases li:first-child a{border-top:1px solid var(--ink-12)}
+.morecases a{display:flex;justify-content:space-between;align-items:baseline;gap:24px;
+  padding:clamp(12px,1.8vh,20px) 0;border-bottom:1px solid var(--ink-12);
+  transition:padding-left .4s var(--ease)}
+.morecases .cname{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.6vw,36px);
+  line-height:1.05;letter-spacing:-.015em;color:var(--ink-30);transition:color .35s var(--ease)}
+.morecases .csec{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-30);opacity:0;transform:translateX(10px);white-space:nowrap;
+  transition:opacity .4s var(--ease),transform .4s var(--ease),color .35s var(--ease)}
+.morecases a:hover,.morecases a:focus-visible{padding-left:clamp(10px,1.5vw,24px)}
+.morecases a:hover .cname,.morecases a:focus-visible .cname{color:var(--hc)}
+.morecases a:hover .csec,.morecases a:focus-visible .csec{opacity:1;transform:none;color:var(--ink-60)}
+@media(max-width:640px){.morecases a{flex-direction:column;gap:6px;align-items:flex-start}.morecases .csec{opacity:1;transform:none}}
+@media(hover:none){.morecases .cname{color:var(--hc)}.morecases .csec{opacity:1;transform:none}}
