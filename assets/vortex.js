@@ -19,11 +19,11 @@
     R = Math.min(W,H)*0.34; cx = W*0.66; cy = H*0.40;
   }
   function init(){
-    parts = []; var N = W<760 ? 150 : 280;
+    parts = []; var N = W<760 ? 300 : 560;
     for (var i=0;i<N;i++){
       var rr = Math.sqrt(Math.random())*R;
       parts.push({ r:rr, a:Math.random()*6.283, size:vary(3.8),
-                   col:COLORS[(Math.random()*4)|0], alpha:0.07 + 0.32*(1-rr/R) });
+                   col:COLORS[(Math.random()*4)|0], alpha:0.14 + 0.42*(1-rr/R) });
     }
   }
   resize(); init();
