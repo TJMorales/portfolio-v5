@@ -9,6 +9,8 @@
   --rose:#BA3F5E;
   --teal:#3FBA9B;
   --lime:#9BBA3F;
+  --blue:#3F5EBA;
+  --blue-ink:#3F5EBA;
   --teal-ink:#2B7F6A;
   --lime-ink:#657929;
   --ink-45:rgba(16,16,16,.45);
@@ -39,6 +41,7 @@ html[data-theme="dark"]{
   --ink-12:rgba(244,242,250,.14);
   --teal-ink:#4FD1AE;
   --lime-ink:#B3D44E;
+  --blue-ink:#8AA0EA;
 }
 html{background:var(--paper)}
 body{transition:background-color .5s var(--ease),color .5s var(--ease)}
@@ -200,6 +203,7 @@ section{padding:clamp(80px,14vh,160px) var(--gutter)}
 .case.c-teal{--c:var(--teal);--c-ink:var(--teal-ink);--tint:rgba(63,186,155,.05)}
 .case.c-rose{--c:var(--rose);--c-ink:var(--rose);--tint:rgba(186,63,94,.045)}
 .case.c-lime{--c:var(--lime);--c-ink:var(--lime-ink);--tint:rgba(155,186,63,.06)}
+.case.c-blue{--c:var(--blue);--c-ink:var(--blue-ink);--tint:rgba(63,94,186,.05)}
 
 /* ---------- clients ---------- */
 .clients ul{list-style:none;max-width:none}
@@ -371,7 +375,7 @@ footer .colors i:nth-child(4){background:var(--teal)}
 .move.full .showcase figure{margin:0;flex:1;min-width:0;aspect-ratio:4/3;overflow:hidden;background:var(--paper);
   border:1px solid var(--ink-12);box-shadow:0 26px 54px -18px rgba(16,16,16,.35);
   transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
-.move.full .showcase figure img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.move.full .showcase figure img,.move.full .showcase figure video{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
 .move.full .showcase figure:hover{z-index:20;position:relative;transform:scale(1.45);box-shadow:0 60px 110px -24px rgba(16,16,16,.55)}
 @media(max-width:860px){
   .move.full .showcase{flex-direction:column;gap:18px}
@@ -406,6 +410,7 @@ footer .colors i:nth-child(4){background:var(--teal)}
 .p-teal{--c:var(--teal);--c-ink:var(--teal-ink)}
 .p-rose{--c:var(--rose);--c-ink:var(--rose)}
 .p-lime{--c:var(--lime);--c-ink:var(--lime-ink)}
+.p-blue{--c:var(--blue);--c-ink:var(--blue-ink)}
 
 @media(max-width:768px){
   .hero h1{font-size:clamp(44px,13.5vw,150px)}

@@ -25,11 +25,11 @@
     c.classList.add('in');                    /* defeat reveal-translate inside 3D */
   });
 
-  var N = cases.length, tz = 0, cur = 0, target = 0, hudIdx = -1;
+  var N = cases.length, STEP = 360 / N, tz = 0, cur = 0, target = 0, hudIdx = -1;
   function size(){
-    tz = scene.getBoundingClientRect().height / 2;
+    tz = (scene.getBoundingClientRect().height / 2) / Math.tan(Math.PI / N);
     cube.querySelectorAll('.cube-face').forEach(function(f, i){
-      f.style.transform = 'rotateX(' + (i * -90) + 'deg) translateZ(' + tz + 'px)';
+      f.style.transform = 'rotateX(' + (i * -STEP) + 'deg) translateZ(' + tz + 'px)';
     });
     track.style.height = (N * 90) + 'vh';     /* 90vh of scroll per face + natural release */
   }
@@ -42,13 +42,13 @@
     return i + f;
   }
   function frame(){
-    target = progress() * 90;
+    target = progress() * STEP;
     cur += (target - cur) * 0.085;            /* eased in/out */
     if (Math.abs(target - cur) < 0.01) cur = target;
-    var frac = (cur / 90) % 1, mid = Math.sin(frac * Math.PI);
+    var frac = (cur / STEP) % 1, mid = Math.sin(frac * Math.PI);
     scene.style.transform = 'scale(' + (1 - 0.13 * mid) + ')';
     cube.style.transform = 'translateZ(' + (-tz) + 'px) rotateX(' + cur + 'deg)';
-    var idx = Math.min(N - 1, Math.round(cur / 90));
+    var idx = Math.min(N - 1, Math.round(cur / STEP));
     if (idx !== hudIdx){ hudIdx = idx; hud.innerHTML = '<b>0' + (idx + 1) + '</b> / 0' + N; }
     requestAnimationFrame(frame);
   }
