@@ -356,7 +356,7 @@ footer .colors i:nth-child(4){background:var(--teal)}
 .move .imgs.layer figure:nth-child(2){position:absolute;right:0;bottom:-10%;width:52%}
 .move .imgs.layer figure:nth-child(2) img{outline:5px solid var(--paper);border-radius:2px}
 .move .imgs.artifact img{width:auto;max-width:100%;height:auto;max-height:82vh;display:block;margin:0 auto}
-.move .imgs.big img{width:110%;max-width:none;margin-left:-5%}
+.move .imgs.big img,.move .imgs.big video{width:110%;max-width:none;margin-left:-5%}
 .move .imgs.small img{width:90%;margin:0 auto}
 .move .imgs figure{overflow:visible}
 .move .imgs,.move .imgs figure,.move .imgs img{max-width:100%}
