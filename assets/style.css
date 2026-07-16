@@ -203,23 +203,24 @@ section{padding:clamp(80px,14vh,160px) var(--gutter)}
 
 /* ---------- clients ---------- */
 .clients ul{list-style:none;max-width:none}
-.clients li{display:flex;align-items:baseline;justify-content:space-between;gap:24px;
-  padding:clamp(14px,2.2vh,24px) 0;border-bottom:1px solid var(--ink-12);cursor:default;
+.clients li:first-child a{border-top:1px solid var(--ink-12)}
+.clients a{display:flex;align-items:baseline;justify-content:space-between;gap:24px;
+  padding:clamp(14px,2.2vh,24px) 0;border-bottom:1px solid var(--ink-12);
   transition:padding-left .4s var(--ease)}
-.clients li:first-child{border-top:1px solid var(--ink-12)}
 .clients .cname{font-family:var(--display);font-weight:800;font-size:clamp(24px,3.6vw,54px);
   line-height:1.05;letter-spacing:-.015em;color:var(--ink-30);transition:color .35s var(--ease)}
 .clients .csec{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--ink-30);opacity:0;transform:translateX(10px);white-space:nowrap;
+  color:var(--ink-30);opacity:0;transform:translateX(10px);white-space:nowrap;flex:none;
   transition:opacity .4s var(--ease),transform .4s var(--ease),color .35s var(--ease)}
-.clients li:hover{padding-left:clamp(10px,1.5vw,24px)}
-.clients li:hover .cname{color:var(--hc)}
-.clients li:hover .csec{opacity:1;transform:none;color:var(--ink-60)}
+.clients .csec::after{content:' \2197'}
+.clients a:hover,.clients a:focus-visible{padding-left:clamp(10px,1.5vw,24px)}
+.clients a:hover .cname,.clients a:focus-visible .cname{color:var(--hc)}
+.clients a:hover .csec,.clients a:focus-visible .csec{opacity:1;transform:none;color:var(--ink-60)}
 .clients li:nth-child(4n+1){--hc:var(--violet)}
 .clients li:nth-child(4n+2){--hc:var(--rose)}
 .clients li:nth-child(4n+3){--hc:var(--teal-ink)}
 .clients li:nth-child(4n+4){--hc:var(--lime-ink)}
-@media(max-width:640px){.clients li{flex-direction:column;gap:6px;align-items:flex-start}.clients .csec{opacity:1;transform:none}}
+@media(max-width:900px){.clients a{flex-direction:column;gap:6px;align-items:flex-start}.clients .csec{opacity:1;transform:none}}
 
 /* ---------- testimonials ---------- */
 .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,4vw,64px)}
