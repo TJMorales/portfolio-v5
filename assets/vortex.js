@@ -45,7 +45,8 @@
     boost += dv*0.00035; boost = Math.max(-0.09, Math.min(0.09, boost));
   }, {passive:true});
 
-  if (reduced){
+  var seen = false; try{ seen = sessionStorage.getItem('tjm-intro') === '1'; }catch(e){}
+  if (reduced || seen){
     document.documentElement.classList.remove('loading');
     if(pct && pct.parentNode) pct.parentNode.removeChild(pct);
     ctx.clearRect(0,0,W,H);
@@ -59,6 +60,7 @@
   var forming = true, t0 = null, FORM = 1900, ended = false;
   function endLoad(){ if(ended) return; ended = true; forming = false;
     clearTimeout(failsafe);
+    try{ sessionStorage.setItem('tjm-intro','1'); }catch(e){}
     document.documentElement.classList.remove('loading');
     if(pct){ pct.textContent = '100%'; pct.classList.add('hide'); setTimeout(function(){ if(pct.parentNode) pct.parentNode.removeChild(pct); }, 700); } }
   var failsafe = setTimeout(endLoad, 4200);           // backstop only

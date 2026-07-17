@@ -15,7 +15,9 @@
   var cube  = document.createElement('div'); cube.className  = 'cube';
   var hud   = document.createElement('div'); hud.className   = 'cube-hud';
   hud.innerHTML = '<b>01</b> / 0' + cases.length;
-  scene.appendChild(cube); stage.appendChild(scene); stage.appendChild(hud); track.appendChild(stage);
+  var skip = document.createElement('a');
+  skip.className = 'cube-skip'; skip.href = '#shipped'; skip.textContent = 'Skip work';
+  scene.appendChild(cube); stage.appendChild(scene); stage.appendChild(hud); stage.appendChild(skip); track.appendChild(stage);
   work.appendChild(track);
   if (kicker) stage.insertBefore(kicker, scene);
 
@@ -49,7 +51,16 @@
     scene.style.transform = 'scale(' + (1 - 0.13 * mid) + ')';
     cube.style.transform = 'translateZ(' + (-tz) + 'px) rotateX(' + cur + 'deg)';
     var idx = Math.min(N - 1, Math.round(cur / STEP));
-    if (idx !== hudIdx){ hudIdx = idx; hud.innerHTML = '<b>0' + (idx + 1) + '</b> / 0' + N; }
+    if (idx !== hudIdx){
+      hudIdx = idx; hud.innerHTML = '<b>0' + (idx + 1) + '</b> / 0' + N;
+      var fs = cube.querySelectorAll('.cube-face');
+      for (var j = 0; j < fs.length; j++){
+        var on = (j === idx);
+        fs[j].toggleAttribute('inert', !on);          /* rotated-away cards can't take focus */
+        fs[j].setAttribute('aria-hidden', on ? 'false' : 'true');
+        var a = fs[j].querySelector('a'); if (a) a.tabIndex = on ? 0 : -1;
+      }
+    }
     requestAnimationFrame(frame);
   }
   size();
