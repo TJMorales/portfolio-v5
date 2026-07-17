@@ -578,3 +578,7 @@ html[data-theme="dark"] .theme-toggle{border-color:transparent;
   }
 }
 @media(prefers-reduced-motion:reduce){.orbit{display:none!important}.work.dim .case:not(:hover){filter:none;opacity:1}}
+
+.bio-cta{margin-top:1.6em}
+.bio-cta a{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:4px}
+.bio-cta a:hover{color:var(--violet);border-color:var(--violet)}
