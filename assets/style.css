@@ -457,7 +457,7 @@ html.loading .hero h1 .row span{animation-play-state:paused}
 .cube-face .case .plate img{max-height:72svh;object-fit:cover}
 .cube-hud{position:absolute;right:var(--gutter);bottom:clamp(20px,4vh,44px);font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--ink-60)}
 .cube-hud b{font-weight:500;color:var(--ink)}
-html.has-cube .work>.case{display:none}
+
 
 /* back-to-top: appears after the cube completes its cycle */
 .totop{position:fixed;right:var(--gutter);bottom:clamp(20px,4vh,40px);z-index:55;
@@ -553,3 +553,28 @@ html[data-theme="dark"] .theme-toggle{border-color:transparent;
 @media(max-width:700px){.ia-fig .ia-svg{padding:8px}}
 
 .hmw-note{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-30);margin-top:clamp(20px,3vh,34px)}
+
+/* ---------- interactive card group (replaces the pinned cube) ---------- */
+.case{position:relative}
+.orbit{display:none}
+@media(min-width:981px) and (hover:hover) and (pointer:fine){
+  .work{position:relative}
+  .work .case{transition:filter .5s var(--ease),opacity .5s var(--ease),transform .5s var(--ease)}
+  .work.dim .case:not(:hover){filter:blur(4px) saturate(.4);opacity:.45}
+  .work.dim .case:hover{transform:scale(1.012);z-index:6}
+  .orbit{display:block;position:absolute;inset:0;pointer-events:none;z-index:5}
+  .orbit img{position:absolute;width:190px;aspect-ratio:16/10;object-fit:cover;object-position:top;
+    border:1px solid var(--ink-12);background:var(--paper);box-shadow:0 22px 44px -14px rgba(16,16,16,.45);
+    opacity:0;transform:translate(-50%,-50%) scale(.7);will-change:transform,opacity}
+  .case:hover .orbit img{animation:orbit 9s linear infinite;opacity:1;
+    transition:opacity .55s var(--ease)}
+  .case:hover .orbit img:nth-child(1){left:16%;top:12%;animation-delay:0s}
+  .case:hover .orbit img:nth-child(2){left:84%;top:26%;animation-delay:-3s}
+  .case:hover .orbit img:nth-child(3){left:30%;top:88%;animation-delay:-6s}
+  @keyframes orbit{
+    0%  {transform:translate(-50%,-50%) rotate(0deg) translateX(26px) rotate(0deg) scale(1)}
+    50% {transform:translate(-50%,-50%) rotate(180deg) translateX(26px) rotate(-180deg) scale(1.06)}
+    100%{transform:translate(-50%,-50%) rotate(360deg) translateX(26px) rotate(-360deg) scale(1)}
+  }
+}
+@media(prefers-reduced-motion:reduce){.orbit{display:none!important}.work.dim .case:not(:hover){filter:none;opacity:1}}

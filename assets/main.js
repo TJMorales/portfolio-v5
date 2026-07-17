@@ -194,3 +194,14 @@
     a.addEventListener('mouseleave', function(){ active = false; peek.classList.remove('on'); });
   });
 })();
+
+/* card group: fuzz the rest of the group while one card is hovered */
+(function(){
+  var work=document.getElementById('work'); if(!work) return;
+  if(!window.matchMedia('(min-width:981px) and (hover:hover) and (pointer:fine)').matches) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  work.querySelectorAll('.case').forEach(function(c){
+    c.addEventListener('mouseenter',function(){ work.classList.add('dim'); });
+    c.addEventListener('mouseleave',function(){ work.classList.remove('dim'); });
+  });
+})();
