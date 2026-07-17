@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Sans:wght@400;500&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="../assets/style.css?v=1784260692" />
+<link rel="stylesheet" href="../assets/style.css?v=1784262381" />
 <script>try{var t=localStorage.getItem("tjm-theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 </head>
 <body class="p-violet">
@@ -52,6 +52,84 @@
   <div class="kick later"><span>The problem</span></div>
   <h2 class="bigline reveal">Students couldn't find their way to the <em>right program</em>.</h2>
   <p class="lede reveal">The information architecture was fragmented, navigation paths were unclear, and the existing program finder took multiple steps and often surfaced incomplete or irrelevant results.</p>
+</section>
+
+<section class="chapter ia-chapter" data-rail="Architecture">
+  <div class="kick"><span>The architecture</span><span>Before / after</span></div>
+  <p class="lede reveal">The old nav mixed student utilities in with the story of the school, and discovery was a catalog to browse. The restructure separated the two and reframed programs around where a student wants to end up.</p>
+  <figure class="ia-fig reveal">
+    <svg class="ia-svg" viewBox="0 0 1240 722" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Information architecture before and after">
+<text x="32.0" y="26" font-family="Spline Sans Mono, monospace" font-size="11" letter-spacing="2.6" fill="var(--ink-30)">Before  ·  May 2022</text>
+<text x="652.0" y="26" font-family="Spline Sans Mono, monospace" font-size="11" letter-spacing="2.6" fill="var(--c)">After</text>
+<line x1="32.0" y1="38" x2="580.0" y2="38" stroke="var(--ink-12)" stroke-width="1"/>
+<line x1="652.0" y1="38" x2="1208.0" y2="38" stroke="var(--ink-12)" stroke-width="1"/>
+<text x="32.0" y="64" font-family="Spline Sans Mono, monospace" font-size="14" font-weight="500" fill="var(--ink-30)">About</text>
+<text x="32.0" y="89" font-family="Spline Sans Mono, monospace" font-size="14" font-weight="500" fill="var(--ink-30)">Admissions</text>
+<text x="32.0" y="114" font-family="Spline Sans Mono, monospace" font-size="14" font-weight="500" fill="var(--c)">Program Explorer</text>
+<text x="32.0" y="139" font-family="Spline Sans Mono, monospace" font-size="14" font-weight="500" fill="var(--ink-30)">Costs and Aid</text>
+<text x="32.0" y="164" font-family="Spline Sans Mono, monospace" font-size="14" font-weight="500" fill="var(--ink-30)">Student Resources</text>
+<text x="32.0" y="189" font-family="Spline Sans Mono, monospace" font-size="14" font-weight="500" fill="var(--ink-30)">— utility, mixed into the nav —</text>
+<line x1="42.0" y1="210" x2="50.0" y2="210" stroke="var(--ink-30)" stroke-width="1" opacity=".5"/>
+<text x="54.0" y="214" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-30)">The Grid</text>
+<line x1="42.0" y1="235" x2="50.0" y2="235" stroke="var(--ink-30)" stroke-width="1" opacity=".5"/>
+<text x="54.0" y="239" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-30)">PALLA</text>
+<line x1="42.0" y1="260" x2="50.0" y2="260" stroke="var(--ink-30)" stroke-width="1" opacity=".5"/>
+<text x="54.0" y="264" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-30)">MyUMB</text>
+<line x1="42.0" y1="285" x2="50.0" y2="285" stroke="var(--ink-30)" stroke-width="1" opacity=".5"/>
+<text x="54.0" y="289" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-30)">Directory</text>
+<line x1="42.0" y1="310" x2="50.0" y2="310" stroke="var(--ink-30)" stroke-width="1" opacity=".5"/>
+<text x="54.0" y="314" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-30)">Blackboard</text>
+<line x1="42.0" y1="335" x2="50.0" y2="335" stroke="var(--ink-30)" stroke-width="1" opacity=".5"/>
+<text x="54.0" y="339" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-30)">SURFS</text>
+<line x1="42.0" y1="360" x2="50.0" y2="360" stroke="var(--ink-30)" stroke-width="1" opacity=".5"/>
+<text x="54.0" y="364" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-30)">Forms</text>
+<text x="652.0" y="64" font-family="Spline Sans Mono, monospace" font-size="14" font-weight="500" fill="var(--ink-60)">Utility bar, separated</text>
+<line x1="662.0" y1="85" x2="670.0" y2="85" stroke="var(--c)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="89" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--c)">Program Finder</text>
+<line x1="662.0" y1="110" x2="670.0" y2="110" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="114" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Forms / MyUMB / Blackboard</text>
+<line x1="662.0" y1="135" x2="670.0" y2="135" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="139" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Apply / Give / Request Info</text>
+<text x="652.0" y="164" font-family="Spline Sans Mono, monospace" font-size="14" font-weight="500" fill="var(--ink-60)">About</text>
+<line x1="662.0" y1="185" x2="670.0" y2="185" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="189" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Welcome</text>
+<line x1="662.0" y1="210" x2="670.0" y2="210" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="214" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Why Choose UMSGS?</text>
+<line x1="662.0" y1="235" x2="670.0" y2="235" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="239" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">News</text>
+<line x1="662.0" y1="260" x2="670.0" y2="260" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="264" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Faculty Directory</text>
+<text x="652.0" y="289" font-family="Spline Sans Mono, monospace" font-size="14" font-weight="500" fill="var(--ink-60)">Admissions</text>
+<line x1="662.0" y1="310" x2="670.0" y2="310" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="314" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Getting Started</text>
+<line x1="662.0" y1="335" x2="670.0" y2="335" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="339" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Cost &amp; Aid</text>
+<line x1="662.0" y1="360" x2="670.0" y2="360" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="364" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">How to Apply</text>
+<line x1="662.0" y1="385" x2="670.0" y2="385" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="389" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Your Application Status</text>
+<line x1="662.0" y1="410" x2="670.0" y2="410" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="414" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">After Your Decision</text>
+<text x="652.0" y="439" font-family="Spline Sans Mono, monospace" font-size="14" font-weight="500" fill="var(--ink-60)">Academics</text>
+<line x1="662.0" y1="460" x2="670.0" y2="460" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="464" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Programs</text>
+<line x1="662.0" y1="485" x2="670.0" y2="485" stroke="var(--c)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="489" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--c)">Programs by Career Path</text>
+<line x1="662.0" y1="510" x2="670.0" y2="510" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="514" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Master's / Doctoral / Certificates</text>
+<line x1="662.0" y1="535" x2="670.0" y2="535" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="539" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Online Learning</text>
+<text x="652.0" y="564" font-family="Spline Sans Mono, monospace" font-size="14" font-weight="500" fill="var(--ink-60)">Student Resources</text>
+<line x1="662.0" y1="585" x2="670.0" y2="585" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="589" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Dates and Deadlines</text>
+<line x1="662.0" y1="610" x2="670.0" y2="610" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="614" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Student Life</text>
+<line x1="662.0" y1="635" x2="670.0" y2="635" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="639" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Campus Life</text>
+<line x1="32.0" y1="682" x2="1208.0" y2="682" stroke="var(--ink-12)" stroke-width="1"/><text x="32.0" y="704" font-family="Spline Sans Mono, monospace" font-size="11.5" fill="var(--c)" letter-spacing="1.2">Utility links pulled out of the main nav. Discovery reframed around career path, not catalog.</text>
+</svg>
+    <figcaption>Navigation captured from the Internet Archive (May 2022) and the live site today.</figcaption>
+  </figure>
 </section>
 
 <section class="chapter hmw-ch" data-rail="The question">
@@ -105,6 +183,6 @@
   <span>Designed with intent. Built by hand.</span>
 </footer>
 
-<script src="../assets/main.js?v=1784260692"></script>
+<script src="../assets/main.js?v=1784262381"></script>
 </body>
 </html>
