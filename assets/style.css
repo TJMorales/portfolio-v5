@@ -309,7 +309,7 @@ footer .colors i:nth-child(4){background:var(--teal)}
 .chero{justify-content:flex-start;min-height:auto;padding-top:clamp(58px,6vh,80px);padding-bottom:clamp(24px,3.5vh,44px)}
 .ghost .g4{display:inline-block;height:.72em;vertical-align:baseline;margin-left:.05em}
 .ghost .g4 svg{height:100%;width:auto;display:block;overflow:visible}
-.ghost .g4 path{stroke:var(--c);stroke-width:3;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:round}
+.ghost .g4 path,.ghost .g4 ellipse{stroke:var(--c);stroke-width:3;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:round}
 .ghost{position:absolute;right:-1vw;top:4vh;font-family:var(--display);font-weight:800;font-size:clamp(160px,32vw,540px);line-height:1;color:transparent;-webkit-text-stroke:3px var(--c);opacity:.18;user-select:none;pointer-events:none;z-index:0}
 .chapter>*{position:relative;z-index:1}
 .chero .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-60);margin-bottom:16px;display:flex;gap:22px;align-items:baseline}
@@ -380,11 +380,14 @@ footer .colors i:nth-child(4){background:var(--teal)}
   border:1px solid var(--ink-12);box-shadow:0 26px 54px -18px rgba(16,16,16,.35);
   transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
 .move.full .showcase figure img,.move.full .showcase figure video{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
-.move.full .showcase figure:hover{z-index:20;position:relative;transform:scale(1.45);box-shadow:0 60px 110px -24px rgba(16,16,16,.55)}
+.move.full .showcase figure{transform-origin:center center}
+.move.full .showcase figure:first-child{transform-origin:left center}
+.move.full .showcase figure:last-child{transform-origin:right center}
+.move.full .showcase figure:hover{z-index:20;position:relative;transform:scale(1.32);box-shadow:0 60px 110px -24px rgba(16,16,16,.55)}
 .move.full .showcase.nat{align-items:flex-start;margin:0 calc(var(--gutter) * -0.6)}
 .move.full .showcase.nat figure{aspect-ratio:auto;overflow:hidden}
 .move.full .showcase.nat figure img,.move.full .showcase.nat figure video{width:100%;height:auto;object-fit:contain}
-.move.full .showcase.nat figure:hover{transform:scale(1.5)}
+.move.full .showcase.nat figure:hover{transform:scale(1.32)}
 @media(max-width:860px){
   .move.full .showcase.nat{margin:0}
   .move.full .showcase{flex-direction:column;gap:18px}
@@ -593,3 +596,19 @@ html[data-theme="dark"] .move .imgs.layer .float,
 html[data-theme="dark"] .orbit img,
 html[data-theme="dark"] .case-peek,
 html[data-theme="dark"] .ia-fig .ia-svg{box-shadow:none}
+
+/* ---------- two-column card group ---------- */
+.work{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,2.4vw,40px);align-items:stretch}
+.work>.kicker{grid-column:1/-1;margin-bottom:0}
+.work>.case,.work>.case:nth-of-type(even){
+  display:flex;flex-direction:column;gap:clamp(14px,1.6vw,22px);
+  grid-template-columns:none;min-height:0;
+  padding:clamp(16px,1.6vw,24px);
+  border:1px solid var(--ink-12);
+}
+.work>.case .plate,.work>.case:nth-of-type(even) .plate{order:-1;aspect-ratio:16/10;border:none}
+.work>.case .text{display:flex;flex-direction:column;flex:1}
+.work>.case h2{font-size:clamp(21px,2.1vw,32px);margin-bottom:12px}
+.work>.case p{max-width:46ch;margin-bottom:0;font-size:15.5px}
+.work>.case .go{margin-top:auto;padding-top:20px}
+@media(max-width:860px){.work{grid-template-columns:1fr}}
