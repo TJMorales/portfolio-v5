@@ -630,3 +630,12 @@ html[data-theme="dark"] .ia-fig .ia-svg{box-shadow:none}
   .work>.case p,.work>.case .go{max-height:none;opacity:1;margin-top:12px;overflow:visible}
   .work>.case .plate img{filter:none}
 }
+
+/* ---------- card -> page colour expansion (after rachsmith PWxoLN) ---------- */
+.xcover{position:fixed;z-index:300;pointer-events:none;transform-origin:50% 50%;border-radius:12px;
+  transition:transform .58s cubic-bezier(.72,0,.24,1),border-radius .28s linear}
+.page-fade{position:fixed;inset:0;z-index:300;pointer-events:none;opacity:1;transition:opacity .55s var(--ease)}
+.page-fade.out{opacity:0}
+.work>.case.leaving .text{opacity:0;transform:translateY(-22px);transition:opacity .22s linear,transform .22s ease-out}
+.work>.case.leaving .plate img{opacity:0;transform:scale(1.12) translateY(-18px);transition:opacity .28s linear,transform .28s ease-in}
+.work>.case.out{opacity:0;transform:translateY(-26px);transition:opacity .3s linear,transform .3s ease-out}

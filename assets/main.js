@@ -205,3 +205,58 @@
     c.addEventListener('mouseleave',function(){ work.classList.remove('dim'); });
   });
 })();
+
+/* card -> page: the accent expands from the card, then fades into the destination */
+(function(){
+  var work=document.getElementById('work'); if(!work) return;
+  var cards=[].slice.call(work.querySelectorAll('.case')); if(!cards.length) return;
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var going=false;
+  function accent(el){ var v=getComputedStyle(el).getPropertyValue('--c').trim(); return (v && v.indexOf('var(')!==0) ? v : '#101010'; }
+  cards.forEach(function(card){
+    card.addEventListener('click', function(e){
+      if(reduced || going) return;
+      if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0) return;  /* let new-tab work */
+      var href=card.getAttribute('href'); if(!href) return;
+      e.preventDefault(); going=true;
+      var col=accent(card);
+      try{ sessionStorage.setItem('tjm-xfade', col); }catch(_){}
+      card.classList.add('leaving');
+      var d=60;
+      cards.forEach(function(o){ if(o===card) return; setTimeout(function(){o.classList.add('out');}, d); d+=70; });
+      setTimeout(function(){
+        var r=card.getBoundingClientRect();
+        var cv=document.createElement('div'); cv.className='xcover';
+        cv.style.left=r.left+'px'; cv.style.top=r.top+'px';
+        cv.style.width=r.width+'px'; cv.style.height=r.height+'px';
+        cv.style.background=col;
+        document.body.appendChild(cv);
+        cv.getBoundingClientRect();
+        var sx=window.innerWidth/r.width, sy=window.innerHeight/r.height;
+        var ox=(window.innerWidth/2 - r.width/2 - r.left)/sx;
+        var oy=(window.innerHeight/2 - r.height/2 - r.top)/sy;
+        cv.style.borderRadius='0px';
+        cv.style.transform='scaleX('+sx+') scaleY('+sy+') translate3d('+ox+'px,'+oy+'px,0)';
+        setTimeout(function(){ window.location.href=href; }, 580);
+      }, 250);
+    });
+  });
+  /* returning via back/bfcache must reset the group */
+  window.addEventListener('pageshow', function(){
+    going=false;
+    cards.forEach(function(o){ o.classList.remove('out','leaving'); });
+    var old=document.querySelector('.xcover'); if(old&&old.parentNode) old.parentNode.removeChild(old);
+  });
+})();
+
+/* destination: fade in from the colour the card expanded with */
+(function(){
+  var col=null; try{ col=sessionStorage.getItem('tjm-xfade'); }catch(_){}
+  if(!col) return;
+  try{ sessionStorage.removeItem('tjm-xfade'); }catch(_){}
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var f=document.createElement('div'); f.className='page-fade'; f.style.background=col;
+  document.body.appendChild(f);
+  requestAnimationFrame(function(){ requestAnimationFrame(function(){ f.classList.add('out'); }); });
+  setTimeout(function(){ if(f.parentNode) f.parentNode.removeChild(f); }, 750);
+})();
