@@ -584,3 +584,12 @@ html[data-theme="dark"] .theme-toggle{border-color:transparent;
 .bio-cta{margin-top:1.6em}
 .bio-cta a{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:4px}
 .bio-cta a:hover{color:var(--violet);border-color:var(--violet)}
+
+/* dark: shadows off — a dark shadow on a dark page reads as discolouration */
+html[data-theme="dark"] .move .imgs img,
+html[data-theme="dark"] .move .imgs video{filter:none}
+html[data-theme="dark"] .move .showcase figure,
+html[data-theme="dark"] .move .imgs.layer .float,
+html[data-theme="dark"] .orbit img,
+html[data-theme="dark"] .case-peek,
+html[data-theme="dark"] .ia-fig .ia-svg{box-shadow:none}
