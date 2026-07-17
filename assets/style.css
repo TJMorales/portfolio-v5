@@ -547,10 +547,12 @@ html[data-theme="dark"] .theme-toggle{border-color:transparent;
 /* IA before/after artifact */
 .ia-chapter{min-height:auto;padding-top:clamp(56px,9vh,100px);padding-bottom:clamp(56px,9vh,100px)}
 .ia-fig{margin:clamp(28px,5vh,52px) 0 0;width:100%}
+.ia-fig .ia-svg text{font-family:var(--mono)}
 .ia-fig .ia-svg{width:100%;height:auto;display:block;border:1px solid var(--ink-12);padding:clamp(14px,2vw,28px);background:var(--paper)}
 .ia-fig figcaption{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-30);margin-top:14px;display:flex;align-items:center;gap:8px}
 .ia-fig figcaption::before{content:'';width:16px;height:1px;background:var(--c);flex:none}
-@media(max-width:700px){.ia-fig .ia-svg{padding:8px}}
+@media(max-width:700px){.ia-fig .ia-svg text{font-family:var(--mono)}
+.ia-fig .ia-svg{padding:8px}}
 
 .hmw-note{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-30);margin-top:clamp(20px,3vh,34px)}
 
