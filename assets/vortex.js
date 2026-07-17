@@ -46,7 +46,7 @@
   }, {passive:true});
 
   var seen = false; try{ seen = sessionStorage.getItem('tjm-intro') === '1'; }catch(e){}
-  if (reduced || seen){
+  if (reduced){
     document.documentElement.classList.remove('loading');
     if(pct && pct.parentNode) pct.parentNode.removeChild(pct);
     ctx.clearRect(0,0,W,H);
@@ -57,14 +57,19 @@
     ctx.globalAlpha=1; return;
   }
 
-  var forming = true, t0 = null, FORM = 1900, ended = false;
+  var forming = !seen, t0 = null, FORM = 1900, ended = seen, failsafe;
   function endLoad(){ if(ended) return; ended = true; forming = false;
     clearTimeout(failsafe);
     try{ sessionStorage.setItem('tjm-intro','1'); }catch(e){}
     document.documentElement.classList.remove('loading');
     if(pct){ pct.textContent = '100%'; pct.classList.add('hide'); setTimeout(function(){ if(pct.parentNode) pct.parentNode.removeChild(pct); }, 700); } }
-  var failsafe = setTimeout(endLoad, 4200);           // backstop only
-  setTimeout(endLoad, FORM + 120);                    // reveal right at 100%
+  if (seen){                                          // intro already played this session
+    document.documentElement.classList.remove('loading');
+    if(pct && pct.parentNode) pct.parentNode.removeChild(pct);
+  } else {
+    failsafe = setTimeout(endLoad, 4200);             // backstop only
+    setTimeout(endLoad, FORM + 120);                  // reveal right at 100%
+  }
   var ease = function(x){ return 1 - Math.pow(1-x,3); };
 
   function frame(t){
