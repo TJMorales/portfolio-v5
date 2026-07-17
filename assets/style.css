@@ -566,7 +566,6 @@ html[data-theme="dark"] .theme-toggle{border-color:transparent;
   .work .case{transition:filter .5s var(--ease),opacity .5s var(--ease),transform .5s var(--ease)}
   .work.dim .case:not(:hover){filter:blur(4px) saturate(.4);opacity:.45}
   .work.dim .case:hover{transform:scale(1.012);z-index:6}
-  .case:hover .orbit img:nth-child(2){left:84%;top:26%;animation-delay:-3s}
 }
 @media(prefers-reduced-motion:reduce){.work.dim .case:not(:hover){filter:none;opacity:1}}
 
