@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>JQI &amp; RQS &middot; Tony Joe Morales</title>
+<meta name="description" content="Two sister quantum institutes, two distinct identities, one component library." />
+<meta property="og:title" content="JQI &amp; RQS &middot; Case study by Tony Joe Morales" />
+<meta property="og:image" content="../assets/card-jqi-rqs.jpg" />
+<script>try{var t=localStorage.getItem("tjm-theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23101010'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-weight='800' font-size='26' fill='%23FAFAF8' text-anchor='middle'%3ETJ%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Sans:wght@400;500&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/style.css?v=1784264343" />
+</head>
+<body class="p-amber">
+<a class="skiplink" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+<div class="rail" aria-hidden="true">Case</div>
+<div class="dot" aria-hidden="true"></div>
+
+<nav>
+  <a class="mark" href="../" aria-label="Tony Joe Morales, home">TJM</a>
+  <ul>
+    <li><a href="../#work">Work</a></li>
+    <li><a href="../about/">About</a></li>
+    <li><a href="../assets/tony-joe-morales-resume.pdf" target="_blank" rel="noopener">Resume</a></li>
+    <li><a href="mailto:tonyjoemorales@gmail.com?subject=Website%20Inquiry">Contact</a></li>
+    <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" aria-pressed="false"></button></li>
+  </ul>
+</nav>
+
+<header class="chapter chero" id="main" data-rail="Case 06">
+  <span class="ghost" aria-hidden="true">06</span>
+  <div class="eyebrow"><i></i><span>Case study 06 / 06</span><span>Quantum research</span></div>
+  <h1><span class="row"><span>JQI</span></span><span class="row"><span>&amp; RQS</span></span></h1>
+  <p class="tag">Two sister quantum institutes, two distinct identities, one component library.</p>
+  <div class="cmeta">
+    <div><small>Client</small><a href="https://jqi.umd.edu/" target="_blank" rel="noopener">jqi.umd.edu &nearr;</a></div>
+    <div><small>And</small><a href="https://rqs.umd.edu/" target="_blank" rel="noopener">rqs.umd.edu &nearr;</a></div>
+    <div><small>Role</small>UX Design</div>
+    <div><small>Agency</small>idfive</div>
+  </div>
+</header>
+
+<figure class="bleed"><img src="../assets/card-jqi-rqs.jpg" alt="The RQS homepage" /></figure>
+
+<section class="chapter" data-rail="The setup">
+  <div class="kick"><span>The client</span></div>
+  <p class="lede reveal">The Joint Quantum Institute is a University of Maryland partnership with NIST. The Institute for Robust Quantum Simulation is an NSF Quantum Leap Challenge Institute working with Maryland, Duke, Princeton, NC State, Yale, and Harvard. Sister institutes, different missions, one web budget.</p>
+  <div class="kick later"><span>The problem</span></div>
+  <h2 class="bigline reveal">Two institutes, one budget, and <em>nothing shared.</em></h2>
+  <p class="lede reveal">JQI's navigation ran eleven flat items with internal acronyms exposed. RQS had five. Neither site served a student trying to understand the field, neither gave the scholarship a home, and the budget covered one component library, not two designs.</p>
+</section>
+
+<section class="chapter hmw-ch" data-rail="The question">
+  <div class="kick"><span>The question</span></div>
+  <p class="hmw"><span class="w q">How</span> <span class="w q">might</span> <span class="w q">we</span> <span class="w">give</span> <span class="w">two</span> <span class="w">sister</span> <span class="w">institutes</span> <span class="w">distinct</span> <span class="w">identities</span> <span class="w">and</span> <span class="w">a</span> <span class="w">real</span> <span class="w">hub</span> <span class="w">for</span> <span class="w">students,</span> <span class="w">from</span> <span class="w">a</span> <span class="w">single</span> <span class="w">component</span> <span class="w">library?</span></p>
+</section>
+
+<section data-rail="The work">
+<div class="move reveal full" data-rail="Move 01">
+  <span class="mnum">Move 01 / 04</span>
+  <div class="mtext"><h3>One library, two identities</h3><p>Both sites are built from the same components: the same filter bar, the same results list, the same directory grid, the same page shell. The identity comes from arrangement and palette, not from separate systems. JQI opens on its own research, light and red. RQS opens full-bleed on a student holding a polarizing filter, dark and teal. Same blocks, two institutes that look nothing alike.</p></div>
+  <div class="showcase nat">
+    <figure><img src="img/jqi-home.webp" alt="The JQI homepage: light, red, research-led" loading="lazy" /><figcaption>JQI: light, red, its own research first</figcaption></figure>
+    <figure><img src="img/rqs-home.webp" alt="The RQS homepage: dark, teal, student-led" loading="lazy" /><figcaption>RQS: dark, teal, students first</figcaption></figure>
+  </div>
+</div>
+<div class="move reveal full" data-rail="Move 02">
+  <span class="mnum">Move 02 / 04</span>
+  <div class="mtext"><h3>The architecture</h3><p>I rebuilt both architectures around what a visitor is looking for rather than how each institute is organized internally. JQI's eleven flat items, acronyms and all, became six sections with real depth. RQS grew from five items into a full structure with room for its three research challenges, its people, and its education work.</p></div>
+  <figure class="ia-fig">
+    <svg class="ia-svg" viewBox="0 0 1240 697" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Information architecture before and after">
+<text x="32.0" y="26" font-family="Spline Sans Mono, monospace" font-size="11" letter-spacing="2.6" fill="var(--ink-30)">Before  ·  Spring 2022</text>
+<text x="652.0" y="26" font-family="Spline Sans Mono, monospace" font-size="11" letter-spacing="2.6" fill="var(--c)">After</text>
+<line x1="32.0" y1="38" x2="580.0" y2="38" stroke="var(--ink-12)" stroke-width="1"/>
+<line x1="652.0" y1="38" x2="1208.0" y2="38" stroke="var(--ink-12)" stroke-width="1"/>
+<text x="32.0" y="64" font-family="Spline Sans Mono, monospace" font-size="14" font-weight="500" fill="var(--c)">JQI  ·  11 flat items</text>
+<line x1="42.0" y1="85" x2="50.0" y2="85" stroke="var(--ink-30)" stroke-width="1" opacity=".5"/>
+<text x="54.0" y="89" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-30)">People / Publications / About</text>
+<line x1="42.0" y1="110" x2="50.0" y2="110" stroke="var(--ink-30)" stroke-width="1" opacity=".5"/>
+<text x="54.0" y="114" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-30)">Research / News / Events</text>
+<line x1="42.0" y1="135" x2="50.0" y2="135" stroke="var(--ink-30)" stroke-width="1" opacity=".5"/>
+<text x="54.0" y="139" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-30)">Outreach / Apply / Login</text>
+<line x1="42.0" y1="160" x2="50.0" y2="160" stroke="var(--c)" stroke-width="1" opacity=".5"/>
+<text x="54.0" y="164" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--c)">PFC</text>
+<line x1="42.0" y1="185" x2="50.0" y2="185" stroke="var(--c)" stroke-width="1" opacity=".5"/>
+<text x="54.0" y="189" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--c)">QUICS</text>
+<line x1="42.0" y1="210" x2="50.0" y2="210" stroke="var(--c)" stroke-width="1" opacity=".5"/>
+<text x="54.0" y="214" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--c)">(internal acronyms, exposed)</text>
+<text x="32.0" y="239" font-family="Spline Sans Mono, monospace" font-size="14" font-weight="500" fill="var(--ink-30)"></text>
+<text x="32.0" y="264" font-family="Spline Sans Mono, monospace" font-size="14" font-weight="500" fill="var(--c)">RQS  ·  5 flat items</text>
+<line x1="42.0" y1="285" x2="50.0" y2="285" stroke="var(--ink-30)" stroke-width="1" opacity=".5"/>
+<text x="54.0" y="289" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-30)">Home</text>
+<line x1="42.0" y1="310" x2="50.0" y2="310" stroke="var(--ink-30)" stroke-width="1" opacity=".5"/>
+<text x="54.0" y="314" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-30)">Publications</text>
+<line x1="42.0" y1="335" x2="50.0" y2="335" stroke="var(--ink-30)" stroke-width="1" opacity=".5"/>
+<text x="54.0" y="339" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-30)">Education</text>
+<line x1="42.0" y1="360" x2="50.0" y2="360" stroke="var(--ink-30)" stroke-width="1" opacity=".5"/>
+<text x="54.0" y="364" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-30)">People</text>
+<line x1="42.0" y1="385" x2="50.0" y2="385" stroke="var(--ink-30)" stroke-width="1" opacity=".5"/>
+<text x="54.0" y="389" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-30)">About</text>
+<text x="32.0" y="414" font-family="Spline Sans Mono, monospace" font-size="14" font-weight="500" fill="var(--ink-30)"></text>
+<text x="32.0" y="439" font-family="Spline Sans Mono, monospace" font-size="14" font-weight="500" fill="var(--c)">No student path. No home for</text>
+<text x="32.0" y="464" font-family="Spline Sans Mono, monospace" font-size="14" font-weight="500" fill="var(--c)">scholarship or partners.</text>
+<text x="652.0" y="64" font-family="Spline Sans Mono, monospace" font-size="14" font-weight="500" fill="var(--c)">JQI  ·  6 sections</text>
+<line x1="662.0" y1="85" x2="670.0" y2="85" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="89" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">News  ·  Events  ·  Publications</text>
+<line x1="662.0" y1="110" x2="670.0" y2="110" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="114" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">People</text>
+<line x1="662.0" y1="135" x2="670.0" y2="135" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="139" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Research</text>
+<line x1="684.0" y1="160" x2="692.0" y2="160" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="696.0" y="164" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Many-Body Physics</text>
+<line x1="684.0" y1="185" x2="692.0" y2="185" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="696.0" y="189" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Quantum Information &amp; Computing</text>
+<line x1="684.0" y1="210" x2="692.0" y2="210" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="696.0" y="214" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Quantum Measurement &amp; Control</text>
+<line x1="662.0" y1="235" x2="670.0" y2="235" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="239" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Outreach</text>
+<line x1="684.0" y1="260" x2="692.0" y2="260" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="696.0" y="264" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Summer Girls Program</text>
+<line x1="684.0" y1="285" x2="692.0" y2="285" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="696.0" y="289" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Women in Physics</text>
+<line x1="662.0" y1="310" x2="670.0" y2="310" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="314" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">About</text>
+<line x1="684.0" y1="335" x2="692.0" y2="335" stroke="var(--c)" stroke-width="1" opacity=".5"/>
+<text x="696.0" y="339" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--c)">Physics Frontier Center (was PFC)</text>
+<text x="652.0" y="364" font-family="Spline Sans Mono, monospace" font-size="14" font-weight="500" fill="var(--c)">RQS  ·  7 sections</text>
+<line x1="662.0" y1="385" x2="670.0" y2="385" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="389" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">News  ·  Events  ·  Publications</text>
+<line x1="662.0" y1="410" x2="670.0" y2="410" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="414" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">People</text>
+<line x1="684.0" y1="435" x2="692.0" y2="435" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="696.0" y="439" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Leadership / Investigators / Postdocs</text>
+<line x1="684.0" y1="460" x2="692.0" y2="460" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="696.0" y="464" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Students / Alumni</text>
+<line x1="662.0" y1="485" x2="670.0" y2="485" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="489" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Research</text>
+<line x1="684.0" y1="510" x2="692.0" y2="510" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="696.0" y="514" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">RC1 / RC2 / RC3 challenges</text>
+<line x1="684.0" y1="535" x2="692.0" y2="535" stroke="var(--c)" stroke-width="1" opacity=".5"/>
+<text x="696.0" y="539" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--c)">Research Partners</text>
+<line x1="662.0" y1="560" x2="670.0" y2="560" stroke="var(--c)" stroke-width="1" opacity=".5"/>
+<text x="674.0" y="564" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--c)">Education &amp; Workforce</text>
+<line x1="684.0" y1="585" x2="692.0" y2="585" stroke="var(--c)" stroke-width="1" opacity=".5"/>
+<text x="696.0" y="589" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--c)">K-12 / Undergrad / Graduate</text>
+<line x1="684.0" y1="610" x2="692.0" y2="610" stroke="var(--ink-60)" stroke-width="1" opacity=".5"/>
+<text x="696.0" y="614" font-family="Spline Sans Mono, monospace" font-size="12.5" font-weight="400" fill="var(--ink-60)">Workforce Development</text>
+<line x1="32.0" y1="657" x2="1208.0" y2="657" stroke="var(--ink-12)" stroke-width="1"/><text x="32.0" y="679" font-family="Spline Sans Mono, monospace" font-size="11.5" fill="var(--c)" letter-spacing="1.2">Acronyms absorbed into plain language. Partners and student pathways given a home.</text>
+</svg>
+    <figcaption>Navigation captured from the Internet Archive (spring 2022) and the live sites today.</figcaption>
+  </figure>
+</div>
+<div class="move reveal full" data-rail="Move 03">
+  <span class="mnum">Move 03 / 04</span>
+  <div class="mtext"><h3>The scholarship</h3><p>Publications are the institutes' main output and had nowhere to live. I gave both a filterable index: JQI's by research group and year, RQS's by year and status. Thousands of papers became something a researcher or a prospective student can actually search.</p></div>
+  <div class="showcase nat">
+    <figure><img src="img/jqi-pubs.webp" alt="JQI publications, filterable by research group and year" loading="lazy" /><figcaption>JQI: filter by research group and year</figcaption></figure>
+    <figure><img src="img/rqs-pubs.webp" alt="RQS publications, filterable by year and status" loading="lazy" /><figcaption>RQS: filter by year and status</figcaption></figure>
+  </div>
+</div>
+<div class="move reveal full" data-rail="Move 04">
+  <span class="mnum">Move 04 / 04</span>
+  <div class="mtext"><h3>The people and the partners</h3><p>The directory now holds everyone from leadership and senior investigators to postdocs, graduate students, and alumni, filterable by role. And RQS's partner institutions, from Maryland and Duke to Princeton, Yale, and Harvard, were given a place on the page instead of a line of body copy.</p></div>
+  <div class="showcase nat">
+    <figure><img src="img/rqs-people.webp" alt="The RQS directory, filterable by role" loading="lazy" /><figcaption>The directory, filterable by role</figcaption></figure>
+    <figure><img src="img/rqs-partners.webp" alt="RQS partner institutions on the homepage" loading="lazy" /><figcaption>Partner institutions, given a place on the page</figcaption></figure>
+  </div>
+</div>
+</section>
+
+<section class="chapter" data-rail="Impact">
+  <span class="ghost" aria-hidden="true">06</span>
+  <div class="kick"><span>Impact</span></div>
+  <p class="lede reveal">The redesign gave two institutes distinct front doors from one component library, on one budget and one timeline. Both architectures are built around what a visitor wants rather than how the institute is organized, the scholarship is searchable, and the people and partners are visible.</p>
+  <div class="impact-stats reveal"><div><b data-val="1">1</b><small>Component library behind both institutes</small></div><div><b data-val="2">2</b><small>Distinct identities built from it, on one budget</small></div><div><b data-val="6">6</b><small>Partner institutions surfaced: Maryland, Duke, Princeton, NC State, Yale, Harvard</small></div></div>
+</section>
+
+<figure class="bleed alt"><img src="img/rqs-footer.webp" alt="" role="presentation" loading="lazy" /></figure>
+
+<section class="chapter" style="min-height:auto" data-rail="My role">
+  <div class="kick"><span>My role</span></div>
+  <p class="lede reveal">I led discovery research, information architecture, UX design, and UX copy on both institutes. Creative direction, graphic design, and front-end development came from the idfive team.</p>
+</section>
+
+<section class="morecases" data-rail="More work">
+  <div class="kick"><span>More case studies</span></div>
+  <ul>
+    <li><a href="../band-of-the-hills/" data-img="../assets/card-band.jpg" style="--hc:var(--lime-ink)"><span class="cname">Band of the Hills</span><span class="csec">Community arts</span></a></li>
+    <li><a href="../umb-graduate/" data-img="../assets/card-umb.jpg" style="--hc:var(--violet)"><span class="cname">UMB School of Graduate Studies</span><span class="csec">Higher education</span></a></li>
+    <li><a href="../one-house/" data-img="../assets/card-one-house.jpg" style="--hc:var(--teal-ink)"><span class="cname">One House At A Time</span><span class="csec">Nonprofit &amp; civic</span></a></li>
+    <li><a href="../baltimore-collegetown/" data-img="../assets/card-collegetown.jpg" style="--hc:var(--rose)"><span class="cname">Baltimore Collegetown</span><span class="csec">Strategic marketing</span></a></li>
+    <li><a href="../cccc/" data-img="../assets/card-cccc.jpg" style="--hc:var(--blue-ink)"><span class="cname">Central Carolina Community College</span><span class="csec">Higher education</span></a></li>
+  </ul>
+</section>
+
+<footer>
+  <span>&copy; 2026 Tony Joe Morales &middot; Austin, TX<span class="colors" aria-hidden="true"><i></i><i></i><i></i><i></i></span></span>
+  <span>Designed with intent. Built by hand.</span>
+</footer>
+
+<script src="../assets/main.js?v=1784264343"></script>
+</body>
+</html>

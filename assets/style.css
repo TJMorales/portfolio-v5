@@ -10,6 +10,8 @@
   --teal:#3FBA9B;
   --lime:#9BBA3F;
   --blue:#3F5EBA;
+  --amber:#BA9B3F;
+  --amber-ink:#6E5A1C;
   --blue-ink:#3F5EBA;
   --teal-ink:#2B7F6A;
   --lime-ink:#657929;
@@ -42,6 +44,7 @@ html[data-theme="dark"]{
   --teal-ink:#4FD1AE;
   --lime-ink:#B3D44E;
   --blue-ink:#8AA0EA;
+  --amber-ink:#D9BC5E;
 }
 html{background:var(--paper)}
 body{transition:background-color .5s var(--ease),color .5s var(--ease)}
@@ -204,6 +207,7 @@ section{padding:clamp(80px,14vh,160px) var(--gutter)}
 .case.c-rose{--c:var(--rose);--c-ink:var(--rose);--tint:rgba(186,63,94,.045)}
 .case.c-lime{--c:var(--lime);--c-ink:var(--lime-ink);--tint:rgba(155,186,63,.06)}
 .case.c-blue{--c:var(--blue);--c-ink:var(--blue-ink);--tint:rgba(63,94,186,.05)}
+.case.c-amber{--c:var(--amber);--c-ink:var(--amber-ink);--tint:rgba(186,155,63,.06)}
 
 /* ---------- clients ---------- */
 .clients ul{list-style:none;max-width:none}
@@ -416,6 +420,7 @@ footer .colors i:nth-child(4){background:var(--teal)}
 .p-rose{--c:var(--rose);--c-ink:var(--rose)}
 .p-lime{--c:var(--lime);--c-ink:var(--lime-ink)}
 .p-blue{--c:var(--blue);--c-ink:var(--blue-ink)}
+.p-amber{--c:var(--amber);--c-ink:var(--amber-ink)}
 
 @media(max-width:768px){
   .hero h1{font-size:clamp(44px,13.5vw,150px)}
