@@ -551,3 +551,5 @@ html[data-theme="dark"] .theme-toggle{border-color:transparent;
 .ia-fig figcaption{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-30);margin-top:14px;display:flex;align-items:center;gap:8px}
 .ia-fig figcaption::before{content:'';width:16px;height:1px;background:var(--c);flex:none}
 @media(max-width:700px){.ia-fig .ia-svg{padding:8px}}
+
+.hmw-note{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-30);margin-top:clamp(20px,3vh,34px)}
