@@ -159,6 +159,8 @@ section{padding:clamp(80px,14vh,160px) var(--gutter)}
 .kicker::after{content:'';flex:1;height:1px;background:var(--ink-12)}
 .reveal{transform:translateY(36px);transition:transform 1s var(--ease)}
 .reveal.in{transform:none}
+.fly{opacity:0;transform:translateY(72px) scale(.972);transition:opacity .85s var(--ease),transform 1s var(--ease)}
+.fly.in{opacity:1;transform:none}
 
 /* ---------- work index ---------- */
 .work{padding-top:clamp(60px,10vh,120px)}
@@ -241,6 +243,15 @@ section{padding:clamp(80px,14vh,160px) var(--gutter)}
 @media(max-width:900px){.clients a{flex-direction:column;gap:6px;align-items:flex-start}.clients .csec{opacity:1;transform:none;white-space:normal}}
 
 /* ---------- testimonials ---------- */
+/* ---------- about interstitial ---------- */
+.about-intro{padding:clamp(64px,13vh,150px) var(--gutter);border-top:1px solid var(--ink-12)}
+.ai-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(28px,5vw,80px);align-items:end;max-width:1120px;margin-top:clamp(20px,4vh,40px)}
+.ai-head{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(30px,5vw,66px);line-height:.97;letter-spacing:-.02em}
+.ai-body p{font-size:clamp(17px,1.5vw,21px);line-height:1.62;color:var(--ink-60);max-width:54ch}
+.ai-link{display:inline-block;margin-top:clamp(20px,3vh,30px);font-family:var(--mono);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding-bottom:4px;border-bottom:1px solid var(--ink);transition:color .3s var(--ease),border-color .3s var(--ease)}
+.ai-link:hover,.ai-link:focus-visible{color:var(--gold-deep);border-color:var(--gold-deep)}
+@media(max-width:760px){.ai-grid{grid-template-columns:1fr;gap:20px;align-items:start}}
+
 .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,4vw,64px)}
 .quotes figure blockquote{
   font-size:clamp(17px,1.5vw,21px);line-height:1.55;
@@ -316,6 +327,7 @@ footer .colors i:nth-child(4){background:var(--teal)}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}
   .reveal{transform:none}
+  .fly{transform:none;opacity:1}
   .dot{display:none}
 }
 
