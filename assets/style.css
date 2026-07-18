@@ -245,12 +245,13 @@ section{padding:clamp(80px,14vh,160px) var(--gutter)}
 /* ---------- testimonials ---------- */
 /* ---------- about interstitial ---------- */
 .about-intro{padding:clamp(64px,13vh,150px) var(--gutter);border-top:1px solid var(--ink-12)}
-.ai-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(28px,5vw,80px);align-items:end;max-width:1120px;margin-top:clamp(20px,4vh,40px)}
-.ai-head{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(30px,5vw,66px);line-height:.97;letter-spacing:-.02em}
-.ai-body p{font-size:clamp(17px,1.5vw,21px);line-height:1.62;color:var(--ink-60);max-width:54ch}
+.ai-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(28px,5vw,80px);align-items:start;max-width:1120px;margin-top:clamp(20px,4vh,40px)}
+.ai-head{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(18px,5.5vw,74px);line-height:.95;letter-spacing:-.02em;margin-top:clamp(18px,3.5vh,36px);text-wrap:balance;overflow-wrap:anywhere}
+.ai-body{margin-top:clamp(28px,5vh,52px);margin-left:auto;max-width:58ch}
+.ai-body p{font-size:clamp(17px,1.6vw,22px);line-height:1.62;color:var(--ink-60)}
 .ai-link{display:inline-block;margin-top:clamp(20px,3vh,30px);font-family:var(--mono);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding-bottom:4px;border-bottom:1px solid var(--ink);transition:color .3s var(--ease),border-color .3s var(--ease)}
 .ai-link:hover,.ai-link:focus-visible{color:var(--gold-deep);border-color:var(--gold-deep)}
-@media(max-width:760px){.ai-grid{grid-template-columns:1fr;gap:20px;align-items:start}}
+@media(max-width:760px){.ai-head{max-width:none}.ai-body{margin-left:0}}
 
 .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,4vw,64px)}
 .quotes figure blockquote{
