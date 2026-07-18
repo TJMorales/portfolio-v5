@@ -249,14 +249,9 @@
   });
 })();
 
-/* destination: fade in from the colour the card expanded with */
+/* destination: the head script already painted the colour; fade it away */
 (function(){
-  var col=null; try{ col=sessionStorage.getItem('tjm-xfade'); }catch(_){}
-  if(!col) return;
-  try{ sessionStorage.removeItem('tjm-xfade'); }catch(_){}
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var f=document.createElement('div'); f.className='page-fade'; f.style.background=col;
-  document.body.appendChild(f);
-  requestAnimationFrame(function(){ requestAnimationFrame(function(){ f.classList.add('out'); }); });
-  setTimeout(function(){ if(f.parentNode) f.parentNode.removeChild(f); }, 750);
+  var h=document.documentElement; if(!h.classList.contains('xfading')) return;
+  requestAnimationFrame(function(){requestAnimationFrame(function(){h.classList.add('xfaded');});});
+  setTimeout(function(){h.classList.remove('xfading','xfaded');},900);
 })();
