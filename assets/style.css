@@ -250,8 +250,8 @@ section{padding:clamp(80px,14vh,160px) var(--gutter)}
 .contact{border-top:1px solid var(--ink-12)}
 .contact h2{
   font-family:var(--display);font-weight:800;text-transform:uppercase;
-  font-size:clamp(44px,9vw,140px);line-height:.95;letter-spacing:-.02em;
-  margin-bottom:clamp(32px,6vh,60px);
+  font-size:clamp(28px,9vw,140px);line-height:.95;letter-spacing:-.02em;
+  margin-bottom:clamp(32px,6vh,60px);overflow-wrap:anywhere;
 }
 .contact h2 a{
   background-image:linear-gradient(90deg,var(--violet),var(--rose),var(--lime),var(--teal),var(--violet));
@@ -348,7 +348,7 @@ footer .colors i:nth-child(4){background:var(--teal)}
 /* moves: full-screen center splits, frameless floating imagery */
 .move{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:clamp(28px,4vw,64px);min-height:100svh;align-items:center;padding:clamp(48px,7vh,80px) var(--gutter);position:relative}
 .move .mnum{position:absolute;left:var(--gutter);top:clamp(28px,5vh,56px);font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--c-ink)}
-.move h3{font-family:var(--display);font-weight:800;font-size:clamp(26px,3.6vw,54px);line-height:1;letter-spacing:-.015em;margin-bottom:20px}
+.move h3{font-family:var(--display);font-weight:800;font-size:clamp(26px,3.6vw,54px);line-height:1;letter-spacing:-.015em;margin-bottom:20px;overflow-wrap:anywhere}
 .move p{font-size:clamp(17px,1.5vw,20px);line-height:1.68;color:var(--ink-60);max-width:44ch}
 .move .imgs{display:grid;gap:clamp(18px,2.5vw,30px)}
 .move .imgs.layer{display:block;position:relative}
