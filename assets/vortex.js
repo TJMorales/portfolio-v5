@@ -91,7 +91,7 @@
         ca = p.alpha*Math.min(1, el/500); // fade in
         sb = 1 + (1-e)*1.6;               // extra spin while forming
       } else if (energy > 0.001){
-        cr = p.r + energy*R*3.2*p.blow;   // mouse moving -> particles blow out far
+        cr = p.r + energy*R*1.4*p.blow;   // mouse moving -> particles blow out far
         cs = p.size*(1 + energy*0.7);     // and swell a little as they scatter
       }
       p.a += (0.005225 + 0.01995*(1-p.r/R))*sb + (forming?0:swirl*(1-p.r/R));
