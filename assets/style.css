@@ -99,8 +99,9 @@ nav{
   position:fixed;top:0;left:0;right:0;z-index:50;
   display:flex;justify-content:space-between;align-items:center;
   padding:22px var(--gutter);
-  mix-blend-mode:difference;color:#fff;
 }
+/* keep the adaptive difference blend on nav text only — not the solid gold button */
+nav .mark,nav ul a:not(.nav-cta),nav .theme-toggle{mix-blend-mode:difference;color:#fff}
 nav .mark{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:.04em}
 nav ul{display:flex;gap:clamp(18px,3vw,40px);list-style:none;font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
 nav ul a{position:relative;padding-bottom:3px}
