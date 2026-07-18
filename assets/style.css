@@ -627,6 +627,10 @@ html[data-theme="dark"] .ia-fig .ia-svg{box-shadow:none}
   .work>.case p,.work>.case .go{max-height:none;opacity:1;margin-top:12px;overflow:visible}
   .work>.case .plate img{filter:none}
 }
+/* small screens: text is always expanded, so the 4/3 card can't hold it — go portrait */
+@media(max-width:760px){
+  .work>.case,.work>.case:nth-of-type(even){aspect-ratio:3/4}
+}
 
 /* ---------- card -> page colour expansion (after rachsmith PWxoLN) ---------- */
 .xcover{position:fixed;z-index:300;pointer-events:none;transform-origin:50% 50%;border-radius:12px;
