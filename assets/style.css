@@ -228,7 +228,7 @@ section{padding:clamp(80px,14vh,160px) var(--gutter)}
 .clients li:nth-child(4n+2){--hc:var(--rose)}
 .clients li:nth-child(4n+3){--hc:var(--teal-ink)}
 .clients li:nth-child(4n+4){--hc:var(--lime-ink)}
-@media(max-width:900px){.clients a{flex-direction:column;gap:6px;align-items:flex-start}.clients .csec{opacity:1;transform:none}}
+@media(max-width:900px){.clients a{flex-direction:column;gap:6px;align-items:flex-start}.clients .csec{opacity:1;transform:none;white-space:normal}}
 
 /* ---------- testimonials ---------- */
 .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,4vw,64px)}
