@@ -1,7 +1,7 @@
 /* Particle vortex — forms as a loading intro (with a % counter), then a subtle hero background. One canvas. */
 (function(){
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var COLORS = ['#5E3FBA','#BA3F5E','#3FBA9B','#9BBA3F'];
+  var COLORS = ['#3E5C76','#5A7794','#8FA6C4','#2B4258','#6E88A6'];
   var DPR = Math.min(window.devicePixelRatio||1, 2);
   function vary(m){ return 0.5 + Math.pow(Math.random(),1.7)*m; } // varied sizes, mostly small
 
@@ -12,6 +12,7 @@
   hero.insertBefore(canvas, hero.firstChild);           // sits behind the copy (copy is z-index:1)
   var ctx = canvas.getContext('2d');
   var W,H,cx,cy,R,hx,hy,tx,ty,parts=[];
+  var mx,my,energy=0,swirl=0;
   function resize(){
     var r = hero.getBoundingClientRect(); W = r.width; H = r.height;
     canvas.width = W*DPR; canvas.height = H*DPR; canvas.style.width = W+'px'; canvas.style.height = H+'px';
@@ -34,9 +35,14 @@
   if (window.matchMedia('(pointer: fine)').matches){
     hero.addEventListener('mousemove', function(e){
       var r = hero.getBoundingClientRect();
-      tx = e.clientX - r.left; ty = e.clientY - r.top;
+      var nx = e.clientX - r.left, ny = e.clientY - r.top;
+      var dx = nx - (mx===undefined?nx:mx), dy = ny - (my===undefined?ny:my);
+      var sp = Math.sqrt(dx*dx+dy*dy);
+      energy = Math.min(1, energy + sp*0.010);      // fast moves = more disruption
+      swirl  += (dx - dy)*0.00022;                   // movement imparts a spin impulse
+      mx = nx; my = ny; tx = nx; ty = ny;
     });
-    hero.addEventListener('mouseleave', function(){ tx = hx; ty = hy; });
+    hero.addEventListener('mouseleave', function(){ tx = hx; ty = hy; energy *= 0.4; });
   }
 
   var boost = 0, last = window.scrollY;
@@ -77,21 +83,29 @@
     var el = t - t0, e = forming ? ease(Math.min(1, el/FORM)) : 1;
     ctx.clearRect(0,0,W,H);
     for (var i=0;i<parts.length;i++){
-      var p = parts[i], cr = p.r, cs = p.size, ca = p.alpha, sb = 1 + boost*9;
+      var p = parts[i], cr = p.r, cs = p.size, ca = p.alpha, sb = 1 + boost*9 + energy*1.6;
       if (forming){
         cr = p.r + (1-e)*(R*1.9);       // blown-out large -> converges to rest radius
         cs = p.size*(1 + (1-e)*2.4);      // large -> settles to normal size
         ca = p.alpha*Math.min(1, el/500); // fade in
         sb = 1 + (1-e)*1.6;               // extra spin while forming
       }
-      p.a += (0.005225 + 0.01995*(1-p.r/R))*sb;   // center faster, edges slower (-5%)
+      p.a += (0.005225 + 0.01995*(1-p.r/R))*sb + (forming?0:swirl*(1-p.r/R));   // center faster, edges slower; movement adds spin
       var x = cx + Math.cos(p.a)*cr, y = cy + Math.sin(p.a)*cr;
+      if (!forming && energy>0.002 && mx!==undefined){    // disruptive wake around the cursor
+        var ddx = x-mx, ddy = y-my, dd = Math.sqrt(ddx*ddx+ddy*ddy)+0.001;
+        if (dd < 210){
+          var f = 1 - dd/210, push = f*f*energy*58;
+          x += (ddx/dd)*push - (ddy/dd)*push*0.55;         // radial shove + tangential swirl
+          y += (ddy/dd)*push + (ddx/dd)*push*0.55;
+        }
+      }
       ctx.globalAlpha = ca; ctx.fillStyle = p.col;
       ctx.beginPath(); ctx.arc(x, y, Math.max(0.2, cs), 0, 6.283); ctx.fill();
     }
-    ctx.globalAlpha = 1; boost *= 0.93;
+    ctx.globalAlpha = 1; boost *= 0.93; energy *= 0.90; swirl *= 0.90;
     if (forming){ cx += (hx - cx)*0.08; cy += (hy - cy)*0.08; }
-    else { cx += (tx - cx)*0.055; cy += (ty - cy)*0.055; }
+    else { cx += (tx - cx)*0.11; cy += (ty - cy)*0.11; }
     if (forming){
       if (pct) pct.textContent = Math.round(Math.min(1, el/FORM)*100) + '%';
     }

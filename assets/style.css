@@ -263,9 +263,9 @@ section{padding:clamp(80px,14vh,160px) var(--gutter)}
 .btn-primary:hover,.btn-primary:focus-visible{background:#EAD65A;box-shadow:0 8px 26px rgba(224,202,60,.42);transform:translateY(-2px)}
 .btn-secondary{background:var(--steel);color:#F8F7F4;border-color:var(--steel)}
 .btn-secondary:hover,.btn-secondary:focus-visible{background:#48688A;box-shadow:0 8px 26px rgba(62,92,118,.4);transform:translateY(-2px)}
-nav ul a.nav-cta{padding:.6em 1.15em;border:1px solid var(--gold);border-radius:2px;line-height:1;transition:background .3s var(--ease),color .3s var(--ease),box-shadow .45s var(--ease)}
+nav ul a.nav-cta{padding:.6em 1.15em;border:1px solid var(--gold);border-radius:2px;line-height:1;background:var(--gold);color:#171926;transition:background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease),box-shadow .45s var(--ease),transform .3s var(--ease)}
 nav ul a.nav-cta::after{display:none}
-nav ul a.nav-cta:hover,nav ul a.nav-cta:focus-visible{background:var(--gold);color:#171926;box-shadow:0 4px 16px rgba(224,202,60,.34)}
+nav ul a.nav-cta:hover,nav ul a.nav-cta:focus-visible{background:#EAD65A;border-color:#EAD65A;color:#171926;box-shadow:0 4px 16px rgba(224,202,60,.34);transform:translateY(-1px)}
 @media(prefers-reduced-motion:reduce){.btn:hover,nav ul a.nav-cta:hover{transform:none}}
 
 .contact{border-top:1px solid var(--ink-12)}
