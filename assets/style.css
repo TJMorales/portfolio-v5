@@ -1,21 +1,25 @@
 
 :root{
-  --paper:#FAFAF8;
-  --ink:#101010;
-  --ink-60:rgba(16,16,16,.6);
-  --ink-30:rgba(16,16,16,.28);
-  --ink-12:rgba(16,16,16,.12);
-  --violet:#5E3FBA;
-  --rose:#BA3F5E;
-  --teal:#3FBA9B;
-  --lime:#9BBA3F;
-  --blue:#3F5EBA;
-  --amber:#BA9B3F;
-  --amber-ink:#6E5A1C;
-  --blue-ink:#3F5EBA;
-  --teal-ink:#2B7F6A;
-  --lime-ink:#657929;
-  --ink-45:rgba(16,16,16,.45);
+  --paper:#F8F7F4;
+  --ink:#171926;
+  --ink-60:rgba(23,25,38,.62);
+  --ink-30:rgba(23,25,38,.30);
+  --ink-12:rgba(23,25,38,.12);
+  --gold:#E0CA3C;
+  --gold-deep:#9A7B1F;
+  --steel:#3E5C76;
+  --steel-soft:#8FA6C4;
+  --violet:#3E5C76;
+  --rose:#9A7B1F;
+  --teal:#3E5C76;
+  --lime:#9A7B1F;
+  --blue:#3E5C76;
+  --amber:#9A7B1F;
+  --amber-ink:#9A7B1F;
+  --blue-ink:#3E5C76;
+  --teal-ink:#3E5C76;
+  --lime-ink:#9A7B1F;
+  --ink-45:rgba(23,25,38,.46);
   --display:'Syne',sans-serif;
   --body:'Instrument Sans',sans-serif;
   --mono:'Instrument Sans',sans-serif;
@@ -35,16 +39,22 @@ body{
 }
 html{overflow-x:clip}
 html[data-theme="dark"]{
-  --paper:#14111C;
-  --ink:#F4F2FA;
-  --ink-60:rgba(244,242,250,.64);
-  --ink-45:rgba(244,242,250,.48);
-  --ink-30:rgba(244,242,250,.30);
-  --ink-12:rgba(244,242,250,.14);
-  --teal-ink:#4FD1AE;
-  --lime-ink:#B3D44E;
-  --blue-ink:#8AA0EA;
-  --amber-ink:#D9BC5E;
+  --paper:#171926;
+  --ink:#F8F7F4;
+  --ink-60:rgba(248,247,244,.64);
+  --ink-45:rgba(248,247,244,.48);
+  --ink-30:rgba(248,247,244,.32);
+  --ink-12:rgba(248,247,244,.14);
+  --violet:#8FA6C4;
+  --rose:#E0CA3C;
+  --teal:#8FA6C4;
+  --lime:#E0CA3C;
+  --blue:#8FA6C4;
+  --amber:#E0CA3C;
+  --teal-ink:#8FA6C4;
+  --lime-ink:#E0CA3C;
+  --blue-ink:#8FA6C4;
+  --amber-ink:#E0CA3C;
 }
 html{background:var(--paper)}
 body{transition:background-color .5s var(--ease),color .5s var(--ease)}
@@ -247,6 +257,17 @@ section{padding:clamp(80px,14vh,160px) var(--gutter)}
 .quotes figcaption b{color:var(--ink);font-weight:500;display:block}
 
 /* ---------- contact ---------- */
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:.5em;font-family:var(--mono);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;line-height:1;padding:.9em 1.6em;border-radius:2px;border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease),box-shadow .45s var(--ease),transform .3s var(--ease)}
+.btn-primary{background:var(--gold);color:#171926;border-color:var(--gold)}
+.btn-primary:hover,.btn-primary:focus-visible{background:#EAD65A;box-shadow:0 8px 26px rgba(224,202,60,.42);transform:translateY(-2px)}
+.btn-secondary{background:var(--steel);color:#F8F7F4;border-color:var(--steel)}
+.btn-secondary:hover,.btn-secondary:focus-visible{background:#48688A;box-shadow:0 8px 26px rgba(62,92,118,.4);transform:translateY(-2px)}
+nav ul a.nav-cta{padding:.6em 1.15em;border:1px solid var(--gold);border-radius:2px;line-height:1;transition:background .3s var(--ease),color .3s var(--ease),box-shadow .45s var(--ease)}
+nav ul a.nav-cta::after{display:none}
+nav ul a.nav-cta:hover,nav ul a.nav-cta:focus-visible{background:var(--gold);color:#171926;box-shadow:0 4px 16px rgba(224,202,60,.34)}
+@media(prefers-reduced-motion:reduce){.btn:hover,nav ul a.nav-cta:hover{transform:none}}
+
 .contact{border-top:1px solid var(--ink-12)}
 .contact h2{
   font-family:var(--display);font-weight:800;text-transform:uppercase;
@@ -264,9 +285,9 @@ section{padding:clamp(80px,14vh,160px) var(--gutter)}
 .contact h2 a:hover,.contact h2 a:focus-visible{color:transparent;-webkit-text-fill-color:transparent}
 @keyframes flowgrad{from{background-position:0% 50%}to{background-position:220% 50%}}
 @media(prefers-reduced-motion:reduce){.contact h2 a{animation:none;background-position:0 50%}}
-.contact .row{display:flex;gap:clamp(24px,4vw,56px);flex-wrap:wrap;font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
-.contact .row a{padding-bottom:4px;border-bottom:1px solid var(--ink)}
-.contact .row a:hover{color:var(--teal-ink);border-color:var(--teal-ink)}
+.contact .row{display:flex;gap:clamp(18px,3vw,36px);flex-wrap:wrap;align-items:center;font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+.contact .row a:not(.btn){padding-bottom:4px;border-bottom:1px solid var(--ink)}
+.contact .row a:not(.btn):hover{color:var(--gold-deep);border-color:var(--gold-deep)}
 
 /* ---------- footer ---------- */
 footer{
@@ -489,7 +510,7 @@ html.loading .hero h1 .row span{animation-play-state:paused}
   transition:transform .4s var(--ease);flex:none}
 .theme-toggle:hover{transform:rotate(180deg)}
 html[data-theme="dark"] .theme-toggle{border-color:transparent;
-  background:conic-gradient(var(--violet) 0 25%,var(--rose) 25% 50%,var(--lime) 50% 75%,var(--teal) 75% 100%)}
+  background:conic-gradient(var(--gold) 0 50%,var(--steel-soft) 50% 100%)}
 
 /* more case studies: compact index, mirrors the clients list */
 .morecases{padding:clamp(56px,9vh,104px) var(--gutter);border-top:1px solid var(--ink-12)}
