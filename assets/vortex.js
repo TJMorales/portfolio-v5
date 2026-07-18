@@ -26,7 +26,8 @@
     for (var i=0;i<N;i++){
       var rr = Math.sqrt(Math.random())*R;
       parts.push({ r:rr, a:Math.random()*6.283, size:vary(3.8),
-                   col:COLORS[(Math.random()*4)|0], alpha:0.14 + 0.42*(1-rr/R) });
+                   col:COLORS[(Math.random()*COLORS.length)|0], alpha:0.14 + 0.42*(1-rr/R),
+                   blow:0.55 + Math.random()*1.15 });
     }
   }
   resize(); init();
@@ -89,21 +90,16 @@
         cs = p.size*(1 + (1-e)*2.4);      // large -> settles to normal size
         ca = p.alpha*Math.min(1, el/500); // fade in
         sb = 1 + (1-e)*1.6;               // extra spin while forming
+      } else if (energy > 0.001){
+        cr = p.r + energy*R*3.2*p.blow;   // mouse moving -> particles blow out far
+        cs = p.size*(1 + energy*0.7);     // and swell a little as they scatter
       }
-      p.a += (0.005225 + 0.01995*(1-p.r/R))*sb + (forming?0:swirl*(1-p.r/R));   // center faster, edges slower; movement adds spin
+      p.a += (0.005225 + 0.01995*(1-p.r/R))*sb + (forming?0:swirl*(1-p.r/R));
       var x = cx + Math.cos(p.a)*cr, y = cy + Math.sin(p.a)*cr;
-      if (!forming && energy>0.002 && mx!==undefined){    // disruptive wake around the cursor
-        var ddx = x-mx, ddy = y-my, dd = Math.sqrt(ddx*ddx+ddy*ddy)+0.001;
-        if (dd < 210){
-          var f = 1 - dd/210, push = f*f*energy*58;
-          x += (ddx/dd)*push - (ddy/dd)*push*0.55;         // radial shove + tangential swirl
-          y += (ddy/dd)*push + (ddx/dd)*push*0.55;
-        }
-      }
       ctx.globalAlpha = ca; ctx.fillStyle = p.col;
       ctx.beginPath(); ctx.arc(x, y, Math.max(0.2, cs), 0, 6.283); ctx.fill();
     }
-    ctx.globalAlpha = 1; boost *= 0.93; energy *= 0.90; swirl *= 0.90;
+    ctx.globalAlpha = 1; boost *= 0.93; energy *= 0.945; swirl *= 0.92;
     if (forming){ cx += (hx - cx)*0.08; cy += (hy - cy)*0.08; }
     else { cx += (tx - cx)*0.11; cy += (ty - cy)*0.11; }
     if (forming){
