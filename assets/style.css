@@ -275,16 +275,10 @@ nav ul a.nav-cta:hover,nav ul a.nav-cta:focus-visible{background:var(--gold);col
   margin-bottom:clamp(32px,6vh,60px);overflow-wrap:anywhere;
 }
 .contact h2 a{
-  background-image:linear-gradient(90deg,var(--violet),var(--rose),var(--lime),var(--teal),var(--violet));
-  background-size:220% 100%;
-  -webkit-background-clip:text;background-clip:text;
-  color:var(--ink);-webkit-text-fill-color:var(--ink);
-  transition:color .45s var(--ease);
-  animation:flowgrad 10s linear infinite;
+  color:var(--ink);
+  transition:color .35s var(--ease);
 }
-.contact h2 a:hover,.contact h2 a:focus-visible{color:transparent;-webkit-text-fill-color:transparent}
-@keyframes flowgrad{from{background-position:0% 50%}to{background-position:220% 50%}}
-@media(prefers-reduced-motion:reduce){.contact h2 a{animation:none;background-position:0 50%}}
+.contact h2 a:hover,.contact h2 a:focus-visible{color:var(--gold-deep)}
 .contact .row{display:flex;gap:clamp(18px,3vw,36px);flex-wrap:wrap;align-items:center;font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
 .contact .row a:not(.btn){padding-bottom:4px;border-bottom:1px solid var(--ink)}
 .contact .row a:not(.btn):hover{color:var(--gold-deep);border-color:var(--gold-deep)}
@@ -502,6 +496,7 @@ html.loading .hero h1 .row span{animation-play-state:paused}
 .totop.on{opacity:1;pointer-events:auto;transform:none}
 .totop:hover,.totop:focus-visible{color:transparent;-webkit-text-fill-color:transparent;border-color:var(--ink)}
 @media(prefers-reduced-motion:reduce){.totop{animation:none;background-position:0 50%}}
+@keyframes flowgrad{from{background-position:0% 50%}to{background-position:220% 50%}}
 
 /* theme toggle: b/w when off, brand color when on */
 .theme-toggle{width:20px;height:20px;border-radius:50%;border:1.5px solid currentColor;cursor:pointer;padding:0;
