@@ -245,13 +245,13 @@ section{padding:clamp(80px,14vh,160px) var(--gutter)}
 /* ---------- testimonials ---------- */
 /* ---------- about interstitial ---------- */
 .about-intro{padding:clamp(64px,13vh,150px) var(--gutter);border-top:1px solid var(--ink-12)}
-.ai-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(28px,5vw,80px);align-items:start;max-width:1120px;margin-top:clamp(20px,4vh,40px)}
-.ai-head{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(18px,5.5vw,74px);line-height:.95;letter-spacing:-.02em;margin-top:clamp(18px,3.5vh,36px);text-wrap:balance;overflow-wrap:anywhere}
-.ai-body{margin-top:clamp(28px,5vh,52px);margin-left:auto;max-width:58ch}
-.ai-body p{font-size:clamp(17px,1.6vw,22px);line-height:1.62;color:var(--ink-60)}
+.ai-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,90px);align-items:center;max-width:1200px;margin-top:clamp(24px,4vh,48px)}
+.ai-head{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(23px,3.8vw,50px);line-height:.92;letter-spacing:-.02em;overflow-wrap:anywhere}
+.ai-body{border-left:1px solid var(--ink-12);padding-left:clamp(28px,5vw,72px);max-width:52ch}
+.ai-body p{font-size:clamp(17px,1.5vw,21px);line-height:1.62;color:var(--ink-60)}
 .ai-link{display:inline-block;margin-top:clamp(20px,3vh,30px);font-family:var(--mono);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding-bottom:4px;border-bottom:1px solid var(--ink);transition:color .3s var(--ease),border-color .3s var(--ease)}
 .ai-link:hover,.ai-link:focus-visible{color:var(--gold-deep);border-color:var(--gold-deep)}
-@media(max-width:760px){.ai-head{max-width:none}.ai-body{margin-left:0}}
+@media(max-width:760px){.ai-split{grid-template-columns:1fr;gap:22px;align-items:start}.ai-body{border-left:0;padding-left:0}}
 
 .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,4vw,64px)}
 .quotes figure blockquote{
@@ -301,13 +301,6 @@ footer{
   padding:28px var(--gutter) 36px;
   font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-60);
 }
-footer .colors{display:inline-flex;gap:6px;vertical-align:middle;margin-left:10px}
-footer .colors i{width:8px;height:8px;border-radius:50%;display:inline-block}
-footer .colors i:nth-child(1){background:var(--violet)}
-footer .colors i:nth-child(2){background:var(--rose)}
-footer .colors i:nth-child(3){background:var(--lime)}
-footer .colors i:nth-child(4){background:var(--teal)}
-
 :focus-visible{outline:2px solid var(--violet);outline-offset:4px}
 
 /* touch devices have no hover: show color states by default */
@@ -638,6 +631,11 @@ html[data-theme="dark"] .ia-fig .ia-svg{box-shadow:none}
   aspect-ratio:4/3;background:var(--ink);
   transition:transform .5s var(--ease),box-shadow .5s var(--ease),filter .5s var(--ease),opacity .5s var(--ease);
 }
+/* staggered card entrances: fade + rise, cascading left-to-right across each row */
+.work>.case{opacity:0}
+.work>.case.in{opacity:1}
+.work>.case:nth-of-type(3n+2){transition-delay:.1s}
+.work>.case:nth-of-type(3n){transition-delay:.2s}
 .work>.case .plate,.work>.case:nth-of-type(even) .plate{position:absolute;inset:0;aspect-ratio:auto;border:none;overflow:hidden}
 .work>.case .plate img{width:100%;height:100%;object-fit:cover;object-position:top;
   filter:grayscale(1) contrast(1.02);transform:scale(1.02);
@@ -656,7 +654,7 @@ html[data-theme="dark"] .ia-fig .ia-svg{box-shadow:none}
 .work>.case .go{color:#fff;margin:0;padding:0;max-height:0;opacity:0;overflow:hidden;
   transition:max-height .55s var(--ease),opacity .45s var(--ease),margin-top .55s var(--ease)}
 .work>.case:hover,.work>.case:focus-within{background-color:var(--ink);transform:translateY(-6px);
-  box-shadow:0 40px 72px -26px rgba(16,16,16,.5)}
+  box-shadow:0 40px 72px -26px rgba(16,16,16,.5);transition-delay:0s}
 .work>.case:hover p,.work>.case:focus-within p{max-height:9em;opacity:1;margin-top:12px}
 .work>.case:hover .go,.work>.case:focus-within .go{max-height:3em;opacity:1;margin-top:18px}
 .work>.case:hover .plate img,.work>.case:focus-within .plate img{filter:grayscale(0);transform:scale(1.08)}

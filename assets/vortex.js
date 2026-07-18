@@ -39,8 +39,8 @@
       var nx = e.clientX - r.left, ny = e.clientY - r.top;
       var dx = nx - (mx===undefined?nx:mx), dy = ny - (my===undefined?ny:my);
       var sp = Math.sqrt(dx*dx+dy*dy);
-      energy = Math.min(1, energy + sp*0.010);      // fast moves = more disruption
-      swirl  += (dx - dy)*0.00022;                   // movement imparts a spin impulse
+      energy = Math.min(1, energy + sp*0.006);      // fast moves = more disruption
+      swirl  += (dx - dy)*0.00012;                   // movement imparts a spin impulse
       mx = nx; my = ny; tx = nx; ty = ny;
     });
     hero.addEventListener('mouseleave', function(){ tx = hx; ty = hy; energy *= 0.4; });
@@ -84,7 +84,7 @@
     var el = t - t0, e = forming ? ease(Math.min(1, el/FORM)) : 1;
     ctx.clearRect(0,0,W,H);
     for (var i=0;i<parts.length;i++){
-      var p = parts[i], cr = p.r, cs = p.size, ca = p.alpha, sb = 1 + boost*9 + energy*1.6;
+      var p = parts[i], cr = p.r, cs = p.size, ca = p.alpha, sb = 1 + boost*9 + energy*0.6;
       if (forming){
         cr = p.r + (1-e)*(R*1.9);       // blown-out large -> converges to rest radius
         cs = p.size*(1 + (1-e)*2.4);      // large -> settles to normal size
@@ -101,7 +101,7 @@
     }
     ctx.globalAlpha = 1; boost *= 0.93; energy *= 0.945; swirl *= 0.92;
     if (forming){ cx += (hx - cx)*0.08; cy += (hy - cy)*0.08; }
-    else { cx += (tx - cx)*0.11; cy += (ty - cy)*0.11; }
+    else { cx += (tx - cx)*0.08; cy += (ty - cy)*0.08; }
     if (forming){
       if (pct) pct.textContent = Math.round(Math.min(1, el/FORM)*100) + '%';
     }
