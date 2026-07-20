@@ -171,42 +171,6 @@
   sync();
 })();
 
-/* copy email to clipboard: recruiters on webmail don't always have a mailto handler */
-(function(){
-  var btn = document.querySelector('.copy-email'); if(!btn) return;
-  var label = btn.textContent;
-  var resetTimer = null;
-  function done(ok){
-    btn.textContent = ok ? 'Copied!' : 'Copy failed — email below';
-    btn.classList.toggle('copied', ok);
-    clearTimeout(resetTimer);
-    resetTimer = setTimeout(function(){
-      btn.textContent = label;
-      btn.classList.remove('copied');
-    }, 1800);
-  }
-  btn.addEventListener('click', function(){
-    var email = btn.getAttribute('data-email');
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(email).then(function(){ done(true); }, function(){ done(false); });
-      return;
-    }
-    try {
-      var ta = document.createElement('textarea');
-      ta.value = email;
-      ta.style.position = 'fixed';
-      ta.style.opacity = '0';
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      document.body.removeChild(ta);
-      done(true);
-    } catch (e) {
-      done(false);
-    }
-  });
-})();
-
 /* case index hover peek */
 (function(){
   var wrap = document.querySelector('.morecases');
