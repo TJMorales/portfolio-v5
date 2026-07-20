@@ -475,20 +475,7 @@ nav,.hero .scrollcue,.hero .meta{transition:opacity .9s ease}
 html.loading nav,html.loading .hero .scrollcue,html.loading .hero .meta{opacity:0}
 html.loading .hero h1 .row span{animation-play-state:paused}
 
-/* ---------- scroll cube (desktop, fine pointer) ---------- */
-.cube-track{position:relative}
-.cube-stage{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
-.cube-stage .kicker{position:absolute;top:clamp(20px,4vh,44px);left:var(--gutter);right:var(--gutter);margin:0}
-.cube-scene{height:min(86svh,980px);margin:0 calc(var(--gutter)*0.5);perspective:1600px;overflow:hidden}
-.cube{position:relative;width:100%;height:100%;transform-style:preserve-3d;will-change:transform}
-.cube-face{position:absolute;inset:0;backface-visibility:hidden;background:var(--paper)}
-.cube-face .case{height:100%;border-top:1px solid var(--ink-12);border-bottom:1px solid var(--ink-12);min-height:0;padding:clamp(20px,3vh,36px) clamp(28px,3vw,56px)}
-.cube-face .case .plate img{max-height:72svh;object-fit:cover}
-.cube-hud{position:absolute;right:var(--gutter);bottom:clamp(20px,4vh,44px);font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18em;color:var(--ink-60)}
-.cube-hud b{font-weight:500;color:var(--ink)}
-
-
-/* back-to-top: appears after the cube completes its cycle */
+/* back-to-top */
 .totop{position:fixed;right:var(--gutter);bottom:clamp(20px,4vh,40px);z-index:55;
   width:52px;height:52px;border:1px solid var(--ink-12);border-radius:50%;
   display:flex;align-items:center;justify-content:center;
@@ -568,11 +555,6 @@ html[data-theme="dark"] .theme-toggle{border-color:transparent;
   text-transform:uppercase;color:var(--ink-30);margin-top:12px;display:flex;align-items:center;gap:8px;line-height:1.5}
 .move .imgs figcaption::before,.move .showcase.nat figcaption::before{content:'';width:16px;height:1px;background:var(--c);flex:none}
 .move .showcase.nat figure{overflow:visible}
-/* cube: escape hatch */
-.cube-skip{position:absolute;left:var(--gutter);bottom:clamp(20px,4vh,44px);z-index:5;
-  font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--ink-60);border-bottom:1px solid var(--ink-12);padding-bottom:3px}
-.cube-skip:hover,.cube-skip:focus-visible{color:var(--ink);border-color:var(--ink)}
 
 /* IA before/after artifact */
 .ia-chapter{min-height:auto;padding-top:clamp(56px,9vh,100px);padding-bottom:clamp(56px,9vh,100px)}
@@ -586,7 +568,7 @@ html[data-theme="dark"] .theme-toggle{border-color:transparent;
 
 .hmw-note{font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-30);margin-top:clamp(20px,3vh,34px)}
 
-/* ---------- interactive card group (replaces the pinned cube) ---------- */
+/* ---------- interactive card group ---------- */
 .case{position:relative}
 @media(min-width:981px) and (hover:hover) and (pointer:fine){
   .work{position:relative}

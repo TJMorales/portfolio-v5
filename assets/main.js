@@ -146,7 +146,7 @@
 /* back-to-top visibility: after the work cycle completes */
 (function(){
   var btn = document.getElementById('totop'); if(!btn) return;
-  function gate(){ return document.querySelector('.cube-track') || document.getElementById('work'); }
+  function gate(){ return document.getElementById('work'); }
   function check(){
     var g = gate(); if(!g) return;
     var r = g.getBoundingClientRect();
