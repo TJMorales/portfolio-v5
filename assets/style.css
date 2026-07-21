@@ -260,8 +260,6 @@ section{padding:clamp(80px,14vh,160px) var(--gutter)}
 .q-viewport{
   position:relative;overflow:hidden;
   height:clamp(320px,44vh,520px);
-  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);
-  mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);
 }
 .q-track{display:flex;align-items:center;height:100%;transition:transform 1s var(--ease-dramatic)}
 .q-slide{
@@ -270,6 +268,14 @@ section{padding:clamp(80px,14vh,160px) var(--gutter)}
   opacity:.32;transition:opacity .9s var(--ease-dramatic);
 }
 .q-slide.is-active{opacity:1}
+.q-slide.is-prev{
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 70%);
+  mask-image:linear-gradient(90deg,transparent 0%,#000 70%);
+}
+.q-slide.is-next{
+  -webkit-mask-image:linear-gradient(90deg,#000 30%,transparent 100%);
+  mask-image:linear-gradient(90deg,#000 30%,transparent 100%);
+}
 .q-slide blockquote{
   font-size:clamp(17px,1.5vw,21px);line-height:1.55;
   border-left:2px solid var(--qc,var(--ink));padding-left:22px;
@@ -302,12 +308,12 @@ section{padding:clamp(80px,14vh,160px) var(--gutter)}
   display:block;
   width:clamp(60px,8.4vh,128px);height:clamp(60px,8.4vh,128px);
   border-top:var(--bw) solid var(--ink-60);
-  opacity:.55;
-  transition:opacity .35s var(--ease),transform .35s var(--ease);
+  opacity:.7;
+  transition:opacity .35s var(--ease),transform .35s var(--ease),border-color .35s var(--ease);
 }
 .q-prev .chev{border-left:var(--bw) solid var(--ink-60);transform:rotate(-45deg)}
 .q-next .chev{border-right:var(--bw) solid var(--ink-60);transform:rotate(45deg)}
-.q-arrow:hover .chev,.q-arrow:focus-visible .chev{opacity:1}
+.q-arrow:hover .chev,.q-arrow:focus-visible .chev{opacity:1;border-color:var(--ink)}
 .q-prev:hover .chev{transform:rotate(-45deg) translate(-4px,-4px)}
 .q-next:hover .chev{transform:rotate(45deg) translate(4px,-4px)}
 
@@ -317,10 +323,7 @@ section{padding:clamp(80px,14vh,160px) var(--gutter)}
 .q-dot:hover{background:var(--ink-30)}
 
 @media(max-width:700px){
-  .q-viewport{height:clamp(220px,50vh,340px);
-    mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);
-    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);
-  }
+  .q-viewport{height:clamp(220px,50vh,340px)}
   .q-arrow{height:44%;width:34px}
   .chev{--bw:4px;width:32px;height:32px}
   .q-slide{width:82vw}
