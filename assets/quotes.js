@@ -10,12 +10,7 @@
 
   function go(i){
     index = (i + slides.length) % slides.length;
-    var prevI = (index - 1 + slides.length) % slides.length;
-    var nextI = (index + 1) % slides.length;
-    for(var n = 0; n < slides.length; n++){ slides[n].classList.remove('is-active','is-prev','is-next'); }
-    slides[index].classList.add('is-active');
-    slides[prevI].classList.add('is-prev');
-    slides[nextI].classList.add('is-next');
+    for(var n = 0; n < slides.length; n++){ slides[n].classList.toggle('is-active', n === index); }
     var active = slides[index];
     var offset = active.offsetLeft - (viewport.clientWidth - active.offsetWidth) / 2;
     track.style.transform = 'translateX(' + (-offset) + 'px)';
