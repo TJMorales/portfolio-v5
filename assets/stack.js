@@ -1,63 +1,25 @@
-/* Case-study stack: pinned scroll cards, scroll-linked scale/parallax, and a colour wash
-   that tracks whichever card is active. Native scroll the whole way — position:sticky
-   does the pinning, this just layers polish on top. */
+/* Case-study grid: cards fade/rise into place as they're scrolled into view, and clicking
+   one expands its accent colour to fill the screen before handing off to the destination. */
 (function(){
   var stack = document.querySelector('.stack'); if (!stack) return;
-  var wraps = [].slice.call(stack.querySelectorAll('.stackwrap'));
-  if (!wraps.length) return;
+  var cards = [].slice.call(stack.querySelectorAll('.stackcard'));
+  if (!cards.length) return;
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var fancy = !reduced && window.matchMedia('(min-width:901px) and (hover:hover) and (pointer:fine)').matches;
 
-  /* ---- scroll-linked pin scale/dim + background image parallax ---- */
-  function applyProgress(){
-    var vh = window.innerHeight;
-    wraps.forEach(function(w){
-      var r = w.getBoundingClientRect();
-      var span = r.height - vh;
-      var p = span > 0 ? (-r.top) / span : 0;
-      p = p < 0 ? 0 : p > 1 ? 1 : p;
-      var card = w.querySelector('.stackcard');
-      var img = w.querySelector('.sc-media img');
-      if (card) {
-        card.style.transform = 'scale(' + (1 - p * 0.08).toFixed(3) + ')';
-        card.style.filter = 'brightness(' + (1 - p * 0.32).toFixed(3) + ') saturate(' + (1 - p * 0.2).toFixed(3) + ')';
-      }
-      if (img) img.style.transform = 'scale(1.14) translateY(' + ((p - 0.5) * 46).toFixed(1) + 'px)';
-    });
-  }
-  if (fancy) {
-    window.addEventListener('scroll', applyProgress, { passive: true });
-    window.addEventListener('resize', applyProgress);
-    applyProgress();
-  }
-
-  /* ---- active-card reveal + backdrop colour wash ---- */
-  var bg = stack.querySelector('.stack-bg');
+  /* ---- reveal: fade + rise as each card scrolls into view ---- */
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
-        e.target.classList.toggle('in', e.isIntersecting);
-        if (e.isIntersecting && bg) {
-          var c = getComputedStyle(e.target).getPropertyValue('--c').trim();
-          if (c) { bg.style.setProperty('--wash', c); bg.classList.add('on'); }
-        }
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
       });
-    }, { threshold: 0.45 });
-    wraps.forEach(function(w){ io.observe(w); });
-
-    if (bg) {
-      var sectionIo = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){ if (!e.isIntersecting) bg.classList.remove('on'); });
-      }, { threshold: 0 });
-      sectionIo.observe(stack);
-    }
+    }, { rootMargin: '0px 0px -8% 0px' });
+    cards.forEach(function(c){ io.observe(c); });
   } else {
-    wraps.forEach(function(w){ w.classList.add('in'); });
+    cards.forEach(function(c){ c.classList.add('in'); });
   }
 
   /* ---- card -> destination page: the accent expands from the card, then fades in ---- */
-  var cards = [].slice.call(stack.querySelectorAll('.stackcard'));
   var going = false;
   cards.forEach(function(card){
     card.addEventListener('click', function(e){
