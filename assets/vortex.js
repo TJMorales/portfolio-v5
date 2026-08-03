@@ -39,7 +39,7 @@
       var nx = e.clientX - r.left, ny = e.clientY - r.top;
       var dx = nx - (mx===undefined?nx:mx), dy = ny - (my===undefined?ny:my);
       var sp = Math.sqrt(dx*dx+dy*dy);
-      energy = Math.min(1, energy + sp*0.006);      // fast moves = more disruption
+      energy = Math.min(1, energy + sp*0.0032);      // fast moves = more disruption
       swirl  += (dx - dy)*0.00012;                   // movement imparts a spin impulse
       mx = nx; my = ny; tx = nx; ty = ny;
     });
@@ -91,8 +91,8 @@
         ca = p.alpha*Math.min(1, el/500); // fade in
         sb = 1 + (1-e)*1.6;               // extra spin while forming
       } else if (energy > 0.001){
-        cr = p.r + energy*R*1.4*p.blow;   // mouse moving -> particles blow out far
-        cs = p.size*(1 + energy*0.7);     // and swell a little as they scatter
+        cr = p.r + energy*R*0.85*p.blow;   // mouse moving -> particles blow out far
+        cs = p.size*(1 + energy*0.45);     // and swell a little as they scatter
       }
       p.a += (0.005225 + 0.01995*(1-p.r/R))*sb + (forming?0:swirl*(1-p.r/R));
       var x = cx + Math.cos(p.a)*cr, y = cy + Math.sin(p.a)*cr;
