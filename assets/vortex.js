@@ -39,7 +39,7 @@
       var nx = e.clientX - r.left, ny = e.clientY - r.top;
       var dx = nx - (mx===undefined?nx:mx), dy = ny - (my===undefined?ny:my);
       var sp = Math.sqrt(dx*dx+dy*dy);
-      energy = Math.min(1, energy + sp*0.0032);      // fast moves = more disruption
+      energy = Math.min(1, energy + sp*0.0015);      // fast moves = more disruption
       swirl  += (dx - dy)*0.00012;                   // movement imparts a spin impulse
       mx = nx; my = ny; tx = nx; ty = ny;
     });
