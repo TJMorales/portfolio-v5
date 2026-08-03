@@ -164,62 +164,6 @@ section{padding:clamp(80px,14vh,160px) var(--gutter)}
 
 /* ---------- work index ---------- */
 .work{padding-top:clamp(60px,10vh,120px)}
-.case{
-  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
-  gap:clamp(28px,5vw,72px);align-items:center;
-  min-height:88svh;
-  padding:clamp(44px,8vh,88px) 0;
-  border-top:1px solid var(--ink-12);
-  position:relative;
-  transition:background-color .6s var(--ease);
-}
-.case:last-of-type{border-bottom:1px solid var(--ink-12)}
-.case .num{
-  position:absolute;top:clamp(28px,5vh,52px);right:0;
-  font-family:var(--display);font-weight:800;font-size:clamp(15px,1.4vw,19px);
-  letter-spacing:.08em;color:var(--ink-60);transition:color .5s var(--ease);
-}
-.case h2{
-  font-family:var(--display);font-weight:800;
-  font-size:clamp(34px,4.6vw,68px);line-height:1;letter-spacing:-.015em;
-  margin-bottom:20px;
-}
-.case p{max-width:52ch;color:var(--ink-60);margin-bottom:28px}
-.case .stats{display:flex;gap:clamp(20px,3vw,44px);flex-wrap:wrap}
-.case .stats div{font-family:var(--mono);font-weight:500}
-.case .stats b{display:block;font-family:var(--display);font-weight:800;font-size:clamp(22px,2.4vw,34px);letter-spacing:-.01em;transition:color .5s var(--ease)}
-.case .stats small{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-60)}
-.case .go{
-  display:inline-flex;align-items:center;gap:10px;margin-top:32px;
-  font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
-}
-.case .go .arrow{transition:transform .4s var(--ease)}
-.case .plate{
-  overflow:hidden;border:1px solid var(--ink-12);
-  aspect-ratio:16/10.5;background:#fff;
-}
-.case .plate img{
-  width:100%;height:100%;object-fit:cover;object-position:50% 30%;
-  filter:grayscale(1) contrast(1.02);
-  transform:scale(1.02);
-  transition:filter .7s var(--ease),transform 1.2s var(--ease);
-}
-.case:hover{background-color:var(--tint)}
-.case:hover .plate img,.case:focus-within .plate img{filter:grayscale(0);transform:scale(1.06)}
-.case:hover .stats b,.case:hover .num,.case:focus-within .stats b{color:var(--c-ink)}
-.case:hover .go .arrow{transform:translateX(8px)}
-.case:nth-of-type(even){grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)}
-.case:nth-of-type(even) .plate{order:-1}
-@media(max-width:860px){
-  .case,.case:nth-of-type(even){grid-template-columns:1fr}
-  .case .plate,.case:nth-of-type(even) .plate{order:-1}
-}
-.case.c-violet{--c:var(--violet);--c-ink:var(--violet);--tint:rgba(94,63,186,.045)}
-.case.c-teal{--c:var(--teal);--c-ink:var(--teal-ink);--tint:rgba(63,186,155,.05)}
-.case.c-rose{--c:var(--rose);--c-ink:var(--rose);--tint:rgba(186,63,94,.045)}
-.case.c-lime{--c:var(--lime);--c-ink:var(--lime-ink);--tint:rgba(155,186,63,.06)}
-.case.c-blue{--c:var(--blue);--c-ink:var(--blue-ink);--tint:rgba(63,94,186,.05)}
-.case.c-amber{--c:var(--amber);--c-ink:var(--amber-ink);--tint:rgba(186,155,63,.06)}
 
 /* ---------- clients ---------- */
 .clients ul{list-style:none;max-width:none}
@@ -364,8 +308,6 @@ footer{
 
 /* touch devices have no hover: show color states by default */
 @media(hover:none){
-  .case .plate img{filter:none}
-  .case .stats b,.case .num{color:var(--c-ink)}
   .clients .cname{color:var(--hc)}
   .clients .csec{opacity:1;transform:none}
   .quotes figure:nth-child(1) blockquote{border-color:var(--violet)}
@@ -382,6 +324,13 @@ footer{
   .reveal{transform:none}
   .fly{transform:none;opacity:1}
   .dot{display:none}
+  .stack-bg{display:none}
+  .stackwrap{height:auto;margin-bottom:clamp(16px,3vw,26px)}
+  .stackwrap:first-of-type{margin-top:0}
+  .stackcard{position:static;height:auto;aspect-ratio:3/4;border-radius:14px;transform:none!important;filter:none!important}
+  .sc-particles{display:none}
+  .sc-media img{transform:none!important}
+  .stackwrap.in .sc-body{opacity:1;transform:none}
 }
 
 /* ---------- case study pages: full-screen chapters ---------- */
@@ -515,7 +464,6 @@ footer{
   .hero h1{font-size:clamp(44px,13.5vw,150px)}
   .hero h1 .row.offset{padding-left:clamp(20px,9vw,120px)}
   .chero h1{font-size:clamp(24px,7.4vw,88px)}
-  .case h2{font-size:clamp(24px,6vw,56px);line-height:1.1;margin-bottom:30px}
   .bigline{font-size:clamp(22px,5vw,50px)}
   .hmw{font-size:clamp(22px,5vw,54px)}
   .move h3{font-size:clamp(18px,4.6vw,44px)}
@@ -628,16 +576,6 @@ html[data-theme="dark"] .theme-toggle{border-color:transparent;
 
 .hmw-note{font-family:var(--mono);font-weight:500;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-30);margin-top:clamp(20px,3vh,34px)}
 
-/* ---------- interactive card group ---------- */
-.case{position:relative}
-@media(min-width:981px) and (hover:hover) and (pointer:fine){
-  .work{position:relative}
-  .work .case{transition:filter .5s var(--ease),opacity .5s var(--ease),transform .5s var(--ease)}
-  .work.dim .case:not(:hover){filter:blur(4px) saturate(.4);opacity:.45}
-  .work.dim .case:hover{transform:scale(1.012);z-index:6}
-}
-@media(prefers-reduced-motion:reduce){.work.dim .case:not(:hover){filter:none;opacity:1}}
-
 .bio-cta{margin-top:1.6em}
 .bio-cta a{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:4px}
 .bio-cta a:hover{color:var(--violet);border-color:var(--violet)}
@@ -650,99 +588,21 @@ html[data-theme="dark"] .move .imgs.layer .float,
 html[data-theme="dark"] .case-peek,
 html[data-theme="dark"] .ia-fig .ia-svg{box-shadow:none}
 
-/* ---------- two-column card group ---------- */
-.work{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,1.8vw,30px);align-items:stretch}
-.work>.kicker{grid-column:1/-1;margin-bottom:0}
-.work>.case,.work>.case:nth-of-type(even){
-  display:flex;flex-direction:column;gap:clamp(14px,1.6vw,22px);
-  grid-template-columns:none;min-height:0;
-  padding:clamp(16px,1.6vw,24px);
-  border:1px solid var(--ink-12);
-}
-.work>.case .plate,.work>.case:nth-of-type(even) .plate{order:-1;aspect-ratio:16/10;border:none}
-.work>.case .text{display:flex;flex-direction:column;flex:1}
-.work>.case h2{font-size:clamp(21px,2.1vw,32px);margin-bottom:12px}
-.work>.case p{max-width:46ch;margin-bottom:0;font-size:15.5px}
-.work>.case .go{margin-top:auto;padding-top:20px}
-@media(max-width:1180px){.work{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:760px){.work{grid-template-columns:1fr}}
-
-/* ---------- editorial image cards: full-bleed art, text over a scrim, hover reveal ---------- */
-.work>.case,.work>.case:nth-of-type(even){
-  position:relative;display:block;padding:0;border:none;border-radius:12px;overflow:hidden;
-  aspect-ratio:4/3;background:var(--ink);
-  transition:transform .5s var(--ease),box-shadow .5s var(--ease),filter .5s var(--ease),opacity .5s var(--ease);
-}
-/* staggered card entrances: fade + rise, cascading left-to-right across each row */
-.work>.case{opacity:0}
-.work>.case.in{opacity:1}
-.work>.case:nth-of-type(3n+2){transition-delay:.1s}
-.work>.case:nth-of-type(3n){transition-delay:.2s}
-.work>.case .plate,.work>.case:nth-of-type(even) .plate{position:absolute;inset:0;aspect-ratio:auto;border:none;overflow:hidden}
-.work>.case .plate img{width:100%;height:100%;object-fit:cover;object-position:top;
-  filter:grayscale(1) contrast(1.02);transform:scale(1.02);
-  transition:filter .7s var(--ease),transform 1.2s var(--ease)}
-.work>.case::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:linear-gradient(180deg,rgba(8,8,10,0) 8%,rgba(8,8,10,.42) 42%,rgba(8,8,10,.82) 70%,rgba(8,8,10,.96) 100%)}
-.work>.case .text{position:absolute;left:0;right:0;bottom:0;z-index:2;display:block;
-  padding:clamp(18px,2vw,30px);color:#fff}
-.work>.case .ceyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-weight:500;
-  font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:10px}
-.work>.case .ceyebrow::before{content:'';width:14px;height:1px;background:var(--c)}
-.work>.case h2{font-size:clamp(19px,1.55vw,26px);line-height:1.06;margin:0;color:#fff}
-.work>.case p{max-width:40ch;font-size:13.5px;line-height:1.55;color:rgba(255,255,255,.8);margin:0;
-  max-height:0;opacity:0;overflow:hidden;
-  transition:max-height .55s var(--ease),opacity .45s var(--ease),margin-top .55s var(--ease)}
-.work>.case .go{color:#fff;margin:0;padding:0;max-height:0;opacity:0;overflow:hidden;
-  transition:max-height .55s var(--ease),opacity .45s var(--ease),margin-top .55s var(--ease)}
-.work>.case:hover,.work>.case:focus-within{background-color:var(--ink);transform:translateY(-6px);
-  box-shadow:0 40px 72px -26px rgba(16,16,16,.5);transition-delay:0s}
-.work>.case:hover p,.work>.case:focus-within p{max-height:9em;opacity:1;margin-top:12px}
-.work>.case:hover .go,.work>.case:focus-within .go{max-height:3em;opacity:1;margin-top:18px}
-.work>.case:hover .plate img,.work>.case:focus-within .plate img{filter:grayscale(0);transform:scale(1.08)}
-@media(hover:none){
-  .work>.case p,.work>.case .go{max-height:none;opacity:1;margin-top:12px;overflow:visible}
-  .work>.case .plate img{filter:none}
-}
-/* small screens: text is always expanded. Don't rely on aspect-ratio for height
-   (iOS Safari collapses a block whose children are all absolutely positioned).
-   Let the text flow in-document so it defines the card height; image sits behind. */
-@media(max-width:760px){
-  .work>.case,.work>.case:nth-of-type(even){aspect-ratio:auto;padding-top:64%}
-  .work>.case .text{position:relative}
-}
-
 /* ---------- card -> page colour expansion (after rachsmith PWxoLN) ---------- */
 .xcover{position:fixed;z-index:300;pointer-events:none;transform-origin:50% 50%;border-radius:12px;
   transition:transform .58s cubic-bezier(.72,0,.24,1),border-radius .28s linear}
 .page-fade{position:fixed;inset:0;z-index:300;pointer-events:none;opacity:1;transition:opacity .55s var(--ease)}
 .page-fade.out{opacity:0}
-.work>.case.leaving .text{opacity:0;transform:translateY(-22px);transition:opacity .22s linear,transform .22s ease-out}
-.work>.case.leaving .plate img{opacity:0;transform:scale(1.12) translateY(-18px);transition:opacity .28s linear,transform .28s ease-in}
-.work>.case.out{opacity:0;transform:translateY(-26px);transition:opacity .3s linear,transform .3s ease-out}
 
 html.xfading::before{content:'';position:fixed;inset:0;z-index:400;background:var(--xfade);
   pointer-events:none;opacity:1;transition:opacity .55s var(--ease)}
 html.xfading.xfaded::before{opacity:0}
 @media(prefers-reduced-motion:reduce){html.xfading::before{display:none}}
 
-
-/* hover: scrim climbs to the middle of the card so the revealed copy stays legible */
-.work>.case::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;
-  transition:opacity .5s var(--ease);
-  background:linear-gradient(180deg,rgba(8,8,10,0) 10%,rgba(8,8,10,.58) 50%,rgba(8,8,10,.9) 78%,rgba(8,8,10,.98) 100%)}
-.work>.case:hover::before,.work>.case:focus-within::before{opacity:1}
-/* arrow: grows and pulses right in the colour the card expands with */
-.work>.case .go .arrow{display:inline-block;transform-origin:left center;transform:scaleX(1.5);margin-left:15px}
-.work>.case:hover .go .arrow,.work>.case:focus-within .go .arrow{
-  color:var(--c);animation:arrowpulse 1.15s var(--ease) infinite}
 @keyframes arrowpulse{
   0%{transform:scale(1.35) scaleX(1.5) translateX(0)}
   50%{transform:scale(1.35) scaleX(1.5) translateX(7px)}
   100%{transform:scale(1.35) scaleX(1.5) translateX(0)}
-}
-@media(prefers-reduced-motion:reduce){
-  .work>.case:hover .go .arrow{animation:none;transform:scale(1.2) scaleX(1.5)}
 }
 .about-intro{position:relative;overflow:hidden}
 .about-intro .collage{position:absolute;inset:0;z-index:0;pointer-events:none}
@@ -757,20 +617,94 @@ html.xfading.xfaded::before{opacity:0}
 .about-intro:has(.ai-link:hover) .ai-link,.about-intro:has(.ai-link:focus-visible) .ai-link{color:var(--gold);border-color:var(--gold)}
 @media(max-width:760px){.about-intro .collage,.about-intro .scrim{display:none}}
 
-.windex{list-style:none}
-.windex-row a{display:flex;align-items:baseline;gap:clamp(16px,3vw,40px);padding:clamp(20px,3.4vh,36px) 0;border-top:1px solid var(--ink-12);transition:padding-left .4s var(--ease)}
-.windex-row:last-child a{border-bottom:1px solid var(--ink-12)}
-.wnum{font-family:var(--mono);font-weight:500;font-size:13px;color:var(--ink-30);flex:none;width:2.4ch}
-.wname{font-family:var(--display);font-weight:800;font-size:clamp(28px,5vw,72px);line-height:1;letter-spacing:-.015em;color:var(--ink-30);transition:color .35s var(--ease);flex:1;min-width:0}
-.wsec{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-30);opacity:0;transform:translateX(10px);white-space:nowrap;flex:none;transition:opacity .4s var(--ease),transform .4s var(--ease),color .35s var(--ease)}
-.warrow{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.4vw,32px);color:var(--hc);opacity:0;transform:translateX(-8px);transition:opacity .4s var(--ease),transform .4s var(--ease);flex:none}
-.windex-row a:hover,.windex-row a:focus-visible{padding-left:clamp(12px,2vw,28px)}
-.windex-row a:hover .wname,.windex-row a:focus-visible .wname{color:var(--ink)}
-.windex-row a:hover .wsec,.windex-row a:focus-visible .wsec{opacity:1;transform:none;color:var(--ink-60)}
-.windex-row a:hover .warrow,.windex-row a:focus-visible .warrow{opacity:1;transform:none}
-.work-peek{position:fixed;right:var(--gutter);top:50%;width:min(30vw,440px);aspect-ratio:16/10.5;z-index:70;pointer-events:none;overflow:hidden;background:var(--paper);border:1px solid var(--ink-12);box-shadow:0 34px 70px -18px rgba(16,16,16,.4);opacity:0;transform:translateY(-50%) scale(.95);transition:opacity .35s var(--ease),transform .35s var(--ease)}
-.work-peek.on{opacity:1;transform:translateY(-50%) scale(1)}
-.work-peek img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.02);transition:filter .5s var(--ease)}
-.work-peek.on img{filter:grayscale(0)}
-@media(hover:none),(max-width:900px){.work-peek{display:none}}
-@media(max-width:640px){.wname{font-size:clamp(22px,7vw,34px)}.wsec{opacity:1;transform:none;white-space:normal}}
+/* ==================================================================
+   case-study stack: full-bleed pinned cards, one per project.
+   Each .stackwrap is a tall scroll-room container; its .stackcard
+   child is position:sticky so it "pins" while you scroll through the
+   wrapper's extra height, then the next card's sticky child slides up
+   and covers it (classic scrollytelling stack, no JS scroll-jacking —
+   native scroll the whole way, JS only adds the polish on top).
+   ================================================================== */
+.stack{position:relative;padding:0 0 clamp(80px,14vh,160px)}
+.stack>.kicker{padding:0 var(--gutter)}
+
+/* colour wash behind the stack: fixed, low-opacity, tracks the active card's accent */
+.stack-bg{
+  position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;
+  transition:opacity .8s var(--ease),background 1.1s var(--ease);
+  background:
+    radial-gradient(120% 90% at 80% 14%,color-mix(in srgb,var(--wash,var(--violet)) 22%,transparent),transparent 60%),
+    radial-gradient(90% 70% at 8% 92%,color-mix(in srgb,var(--wash,var(--violet)) 14%,transparent),transparent 55%),
+    var(--paper);
+}
+.stack-bg.on{opacity:1}
+
+.stackwrap{position:relative;height:170vh}
+.stackwrap:first-of-type{margin-top:clamp(28px,4vh,48px)}
+
+.stackcard{
+  position:sticky;top:0;height:100svh;display:block;overflow:hidden;
+  background:var(--ink);color:#fff;
+  transition:transform .5s var(--ease),filter .5s var(--ease);
+}
+.sc-num{
+  position:absolute;top:clamp(20px,4vh,40px);right:clamp(20px,4vw,52px);z-index:4;
+  font-family:var(--display);font-weight:800;font-size:clamp(14px,1.5vw,20px);letter-spacing:.06em;
+  color:rgba(255,255,255,.92);text-shadow:0 2px 14px rgba(0,0,0,.4);
+}
+.sc-num i{font-style:normal;font-weight:500;color:rgba(255,255,255,.55)}
+
+.sc-media{position:absolute;inset:0;z-index:0}
+.sc-media img{
+  width:100%;height:100%;object-fit:cover;object-position:center 22%;
+  transform:scale(1.14);transition:transform .9s var(--ease);will-change:transform;
+}
+.sc-particles{position:absolute;inset:0;width:100%;height:100%;z-index:1;mix-blend-mode:screen}
+.sc-scrim{
+  position:absolute;inset:0;z-index:2;
+  background:
+    linear-gradient(180deg,rgba(8,8,10,.02) 0%,rgba(8,8,10,.08) 38%,rgba(8,8,10,.62) 74%,rgba(8,8,10,.92) 100%),
+    linear-gradient(100deg,color-mix(in srgb,var(--c) 42%,transparent) 0%,transparent 55%);
+}
+
+.sc-body{
+  position:absolute;left:0;right:0;bottom:0;z-index:3;
+  padding:clamp(28px,5vw,72px) clamp(28px,5vw,72px) clamp(40px,7vh,72px);
+  max-width:920px;
+  opacity:0;transform:translateY(46px);
+  transition:opacity .8s var(--ease),transform .9s var(--ease);
+}
+.stackwrap.in .sc-body{opacity:1;transform:none}
+.sc-sector{
+  display:inline-flex;align-items:center;gap:10px;margin-bottom:14px;
+  font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--c);
+}
+.sc-sector::before{content:'';width:22px;height:1px;background:var(--c)}
+.sc-title{
+  font-family:var(--display);font-weight:800;text-wrap:balance;
+  font-size:clamp(30px,6vw,84px);line-height:.98;letter-spacing:-.02em;margin-bottom:16px;
+}
+.sc-blurb{max-width:52ch;font-size:clamp(15px,1.3vw,19px);line-height:1.6;color:rgba(255,255,255,.82);margin-bottom:26px}
+.sc-go{
+  display:inline-flex;align-items:center;gap:10px;color:#fff;
+  font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+}
+.sc-go .arrow{display:inline-block;transition:transform .4s var(--ease)}
+.stackcard:hover .sc-go .arrow,.stackcard:focus-visible .sc-go .arrow{
+  color:var(--c);animation:arrowpulse 1.15s var(--ease) infinite;
+}
+.stackcard:hover .sc-media img,.stackcard:focus-visible .sc-media img{transform:scale(1.22)}
+:focus-visible.stackcard,.stackcard:focus-visible{outline-offset:-4px}
+
+/* fallback: touch devices, narrow screens, or reduced motion — plain stacked cards, no pin/parallax/particles */
+@media(max-width:900px),(pointer:coarse){
+  .stack-bg{display:none}
+  .stackwrap{height:auto;margin-bottom:clamp(16px,3vw,26px)}
+  .stackwrap:first-of-type{margin-top:0}
+  .stackcard{position:static;height:auto;aspect-ratio:3/4;border-radius:14px}
+  .sc-particles{display:none}
+  .sc-media img{transform:none!important}
+  .stackcard,.sc-media img{transition:none}
+}
+@media(max-width:480px){.sc-title{font-size:clamp(26px,8vw,40px)}}

@@ -195,60 +195,6 @@
   });
 })();
 
-/* card group: fuzz the rest of the group while one card is hovered */
-(function(){
-  var work=document.getElementById('work'); if(!work) return;
-  if(!window.matchMedia('(min-width:981px) and (hover:hover) and (pointer:fine)').matches) return;
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  work.querySelectorAll('.case').forEach(function(c){
-    c.addEventListener('mouseenter',function(){ work.classList.add('dim'); });
-    c.addEventListener('mouseleave',function(){ work.classList.remove('dim'); });
-  });
-})();
-
-/* card -> page: the accent expands from the card, then fades into the destination */
-(function(){
-  var work=document.getElementById('work'); if(!work) return;
-  var cards=[].slice.call(work.querySelectorAll('.case')); if(!cards.length) return;
-  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var going=false;
-  function accent(el){ var v=getComputedStyle(el).getPropertyValue('--c').trim(); return (v && v.indexOf('var(')!==0) ? v : '#101010'; }
-  cards.forEach(function(card){
-    card.addEventListener('click', function(e){
-      if(reduced || going) return;
-      if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0) return;  /* let new-tab work */
-      var href=card.getAttribute('href'); if(!href) return;
-      e.preventDefault(); going=true;
-      var col=accent(card);
-      try{ sessionStorage.setItem('tjm-xfade', col); }catch(_){}
-      card.classList.add('leaving');
-      var d=60;
-      cards.forEach(function(o){ if(o===card) return; setTimeout(function(){o.classList.add('out');}, d); d+=70; });
-      setTimeout(function(){
-        var r=card.getBoundingClientRect();
-        var cv=document.createElement('div'); cv.className='xcover';
-        cv.style.left=r.left+'px'; cv.style.top=r.top+'px';
-        cv.style.width=r.width+'px'; cv.style.height=r.height+'px';
-        cv.style.background=col;
-        document.body.appendChild(cv);
-        cv.getBoundingClientRect();
-        var sx=window.innerWidth/r.width, sy=window.innerHeight/r.height;
-        var ox=(window.innerWidth/2 - r.width/2 - r.left)/sx;
-        var oy=(window.innerHeight/2 - r.height/2 - r.top)/sy;
-        cv.style.borderRadius='0px';
-        cv.style.transform='scaleX('+sx+') scaleY('+sy+') translate3d('+ox+'px,'+oy+'px,0)';
-        setTimeout(function(){ window.location.href=href; }, 580);
-      }, 250);
-    });
-  });
-  /* returning via back/bfcache must reset the group */
-  window.addEventListener('pageshow', function(){
-    going=false;
-    cards.forEach(function(o){ o.classList.remove('out','leaving'); });
-    var old=document.querySelector('.xcover'); if(old&&old.parentNode) old.parentNode.removeChild(old);
-  });
-})();
-
 /* destination: the head script already painted the colour; fade it away */
 (function(){
   var h=document.documentElement; if(!h.classList.contains('xfading')) return;
@@ -256,25 +202,3 @@
   setTimeout(function(){h.classList.remove('xfading','xfaded');},900);
 })();
 
-(function(){
-  var wrap = document.querySelector('.windex');
-  if (!wrap || !window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
-  var peek = document.createElement('div'); peek.className='work-peek'; peek.setAttribute('aria-hidden','true');
-  var img = document.createElement('img'); img.alt=''; peek.appendChild(img);
-  document.body.appendChild(peek);
-  var ty = window.innerHeight/2, cy = ty, active = false, raf = null;
-  function loop(){
-    cy += (ty - cy) * 0.14;
-    peek.style.top = cy + 'px';
-    raf = (active || Math.abs(ty - cy) > 0.5) ? requestAnimationFrame(loop) : null;
-  }
-  wrap.addEventListener('mousemove', function(e){ ty = e.clientY; if(!raf) raf = requestAnimationFrame(loop); });
-  wrap.querySelectorAll('a[data-img]').forEach(function(a){
-    a.addEventListener('mouseenter', function(){
-      var src = a.getAttribute('data-img');
-      if (img.getAttribute('src') !== src) img.setAttribute('src', src);
-      active = true; peek.classList.add('on');
-    });
-    a.addEventListener('mouseleave', function(){ active = false; peek.classList.remove('on'); });
-  });
-})();
