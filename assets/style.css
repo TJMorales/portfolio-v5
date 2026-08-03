@@ -328,7 +328,6 @@ footer{
   .stackwrap{height:auto;margin-bottom:clamp(16px,3vw,26px)}
   .stackwrap:first-of-type{margin-top:0}
   .stackcard{position:static;height:auto;aspect-ratio:3/4;border-radius:14px;transform:none!important;filter:none!important}
-  .sc-particles{display:none}
   .sc-media img{transform:none!important}
   .stackwrap.in .sc-body{opacity:1;transform:none}
 }
@@ -659,12 +658,11 @@ html.xfading.xfaded::before{opacity:0}
   width:100%;height:100%;object-fit:cover;object-position:center 22%;
   transform:scale(1.14);transition:transform .9s var(--ease);will-change:transform;
 }
-.sc-particles{position:absolute;inset:0;width:100%;height:100%;z-index:1;mix-blend-mode:screen}
 .sc-scrim{
-  position:absolute;inset:0;z-index:2;
+  position:absolute;inset:0;z-index:1;
   background:
     linear-gradient(180deg,rgba(8,8,10,.02) 0%,rgba(8,8,10,.08) 38%,rgba(8,8,10,.62) 74%,rgba(8,8,10,.92) 100%),
-    linear-gradient(100deg,color-mix(in srgb,var(--c) 42%,transparent) 0%,transparent 55%);
+    linear-gradient(100deg,color-mix(in srgb,var(--c) 48%,transparent) 0%,transparent 60%);
 }
 
 .sc-body{
@@ -697,13 +695,12 @@ html.xfading.xfaded::before{opacity:0}
 .stackcard:hover .sc-media img,.stackcard:focus-visible .sc-media img{transform:scale(1.22)}
 :focus-visible.stackcard,.stackcard:focus-visible{outline-offset:-4px}
 
-/* fallback: touch devices, narrow screens, or reduced motion — plain stacked cards, no pin/parallax/particles */
+/* fallback: touch devices, narrow screens, or reduced motion — plain stacked cards, no pin/parallax */
 @media(max-width:900px),(pointer:coarse){
   .stack-bg{display:none}
   .stackwrap{height:auto;margin-bottom:clamp(16px,3vw,26px)}
   .stackwrap:first-of-type{margin-top:0}
   .stackcard{position:static;height:auto;aspect-ratio:3/4;border-radius:14px}
-  .sc-particles{display:none}
   .sc-media img{transform:none!important}
   .stackcard,.sc-media img{transition:none}
 }

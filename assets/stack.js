@@ -1,6 +1,6 @@
-/* Case-study stack: pinned scroll cards, scroll-linked scale/parallax, per-card ambient
-   particles, and a colour wash that tracks whichever card is active. Native scroll the
-   whole way — position:sticky does the pinning, this just layers polish on top. */
+/* Case-study stack: pinned scroll cards, scroll-linked scale/parallax, and a colour wash
+   that tracks whichever card is active. Native scroll the whole way — position:sticky
+   does the pinning, this just layers polish on top. */
 (function(){
   var stack = document.querySelector('.stack'); if (!stack) return;
   var wraps = [].slice.call(stack.querySelectorAll('.stackwrap'));
@@ -54,58 +54,6 @@
     }
   } else {
     wraps.forEach(function(w){ w.classList.add('in'); });
-  }
-
-  /* ---- ambient particles per card, only animating while its wrapper is on screen ---- */
-  if (fancy && 'IntersectionObserver' in window) {
-    var DPR = Math.min(window.devicePixelRatio || 1, 2);
-    wraps.forEach(function(w){
-      var canvas = w.querySelector('.sc-particles'); if (!canvas) return;
-      var ctx = canvas.getContext('2d');
-      var col = getComputedStyle(w).getPropertyValue('--c').trim() || '#ffffff';
-      var W, H, parts = [], raf = null;
-      function size(){
-        var r = canvas.getBoundingClientRect();
-        if (r.width <= 0 || r.height <= 0) return;
-        W = r.width; H = r.height;
-        canvas.width = W * DPR; canvas.height = H * DPR;
-        ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-      }
-      function init(){
-        parts = [];
-        var N = 44;
-        for (var i = 0; i < N; i++) {
-          parts.push({
-            x: Math.random() * W, y: Math.random() * H,
-            s: 0.6 + Math.random() * 2.2,
-            v: 0.15 + Math.random() * 0.45,
-            a: 0.08 + Math.random() * 0.28,
-            d: Math.random() * Math.PI * 2
-          });
-        }
-      }
-      function frame(){
-        ctx.clearRect(0, 0, W, H);
-        for (var i = 0; i < parts.length; i++) {
-          var p = parts[i];
-          p.y -= p.v; p.d += 0.01; p.x += Math.sin(p.d) * 0.25;
-          if (p.y < -10) { p.y = H + 10; p.x = Math.random() * W; }
-          ctx.globalAlpha = p.a; ctx.fillStyle = col;
-          ctx.beginPath(); ctx.arc(p.x, p.y, p.s, 0, 6.283); ctx.fill();
-        }
-        ctx.globalAlpha = 1;
-        raf = requestAnimationFrame(frame);
-      }
-      size(); init();
-      window.addEventListener('resize', function(){ size(); init(); });
-      var pio = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){
-          if (e.isIntersecting && !raf) frame();
-          else if (!e.isIntersecting && raf) { cancelAnimationFrame(raf); raf = null; }
-        });
-      }, { threshold: 0 });
-      pio.observe(w);
-    });
   }
 
   /* ---- card -> destination page: the accent expands from the card, then fades in ---- */
