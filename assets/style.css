@@ -470,6 +470,7 @@ footer{
 .p-lime{--c:var(--lime);--c-ink:var(--lime-ink)}
 .p-blue{--c:var(--blue);--c-ink:var(--blue-ink)}
 .p-amber{--c:var(--amber);--c-ink:var(--amber-ink)}
+.p-steel{--c:var(--steel-soft);--c-ink:var(--teal-ink)}
 
 @media(max-width:768px){
   .hero h1{font-size:clamp(44px,13.5vw,150px)}
