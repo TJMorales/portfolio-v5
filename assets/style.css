@@ -1,6 +1,6 @@
 
 :root{
-  --paper:#F8F7F4;
+  --paper:#F7F1E7;
   --ink:#171926;
   --ink-60:rgba(23,25,38,.62);
   --ink-30:rgba(23,25,38,.30);
@@ -635,26 +635,23 @@ html.xfading.xfaded::before{opacity:0}
 
 /* the card frame itself never moves - only the photo behind the mask tilts in 3D */
 .stackcard{
-  position:relative;display:block;border-radius:16px;background:var(--paper);
+  position:relative;display:block;background:none;
   opacity:0;transform:translateY(46px) scale(.97);
-  transition:opacity .9s var(--ease),transform .9s var(--ease),box-shadow .5s var(--ease);
+  transition:opacity .9s var(--ease),transform .9s var(--ease);
 }
 .stackcard.in{opacity:1;transform:none}
 .stackgrid>.stackcard:nth-child(2n){transition-delay:.12s}
 .stackgrid>.stackcard.in{transition-delay:0s}
-.stackcard:hover,.stackcard:focus-visible{
-  box-shadow:0 30px 64px -26px rgba(16,16,16,.35);
-}
 
 .sc-media{
-  position:relative;aspect-ratio:4/3.1;overflow:hidden;background:var(--ink);
-  border-radius:16px 16px 0 0;perspective:700px;
+  position:relative;aspect-ratio:3/2;overflow:hidden;background:var(--ink);
+  border-radius:16px;perspective:1200px;margin-bottom:20px;
 }
 .sc-media img{
   width:100%;height:100%;object-fit:cover;object-position:center 20%;
-  transform:scale(1.03);transition:transform .5s var(--ease);
+  transform:scale(1.04);transition:transform .5s var(--ease);
 }
-@media(hover:none),(pointer:coarse){.sc-media img{transform:none!important;transition:none}}
+@media(hover:none),(pointer:coarse){.sc-media img{transform:scale(1.04)!important;transition:none}}
 
 .sc-num{
   position:absolute;top:16px;right:16px;z-index:1;
@@ -663,36 +660,33 @@ html.xfading.xfaded::before{opacity:0}
 }
 .sc-num i{font-style:normal;color:rgba(255,255,255,.55)}
 
-.sc-body{padding:clamp(20px,2.4vw,30px)}
+.sc-body{padding:0}
 .sc-tags{
-  font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;line-height:1.5;
-  color:var(--gold);margin-bottom:12px;
+  font-family:var(--mono);font-size:13.5px;letter-spacing:.03em;line-height:1.5;
+  color:var(--blue-ink);margin-bottom:10px;
 }
-
-/* line 2: an arrow that eases in from the left of the title, hover-only, independent of
-   the card frame and the image tilt - a pure affordance cue */
-.sc-line2{display:flex;align-items:baseline;gap:10px}
-.sc-arrow{
-  display:inline-block;font-family:var(--display);font-weight:800;
-  font-size:clamp(18px,1.9vw,26px);color:var(--gold);
-  opacity:0;transform:translateX(-12px);
-  transition:opacity .35s var(--ease),transform .35s var(--ease);
-}
-.stackcard:hover .sc-arrow,.stackcard:focus-visible .sc-arrow{opacity:1;transform:translateX(0)}
 
 /* title: a flip-clock style reveal, letter by letter, tied only to scroll-entrance
-   (.stackcard.in) - never to hover or to the image's cursor tilt */
+   (.stackcard.in) - never to hover or to the image's cursor tilt. The arrow is positioned
+   out-of-flow so it never shifts the title's own left edge; it slides in on hover only. */
 .sc-title{
+  position:relative;
   font-family:var(--display);font-weight:800;text-wrap:balance;
-  font-size:clamp(21px,2.2vw,30px);line-height:1.14;letter-spacing:-.015em;
+  font-size:clamp(28px,3vw,40px);line-height:1.08;letter-spacing:-.015em;
   color:var(--ink);
 }
+.sc-arrow{
+  position:absolute;left:0;top:.1em;z-index:-1;
+  display:inline-block;font-weight:800;color:var(--blue-ink);
+  opacity:0;transform:translateX(-16px);
+  transition:opacity .4s var(--ease),transform .4s var(--ease);
+}
+.stackcard:hover .sc-arrow,.stackcard:focus-visible .sc-arrow{opacity:1;transform:translateX(-26px)}
 .sc-title .tchar{display:inline-block;overflow:hidden;vertical-align:top}
 .sc-title .tchar>span{display:inline-block;transform:translateY(115%);transition:transform .6s var(--ease)}
 .stackcard.in .sc-title .tchar>span{transform:translateY(0)}
 @media(prefers-reduced-motion:reduce),(hover:none),(pointer:coarse){
   .sc-title .tchar>span{transform:none;transition:none}
-  .sc-arrow{opacity:1;transform:none}
 }
 
-@media(max-width:480px){.sc-title{font-size:clamp(19px,5vw,24px)}}
+@media(max-width:480px){.sc-title{font-size:clamp(23px,7vw,30px)}}

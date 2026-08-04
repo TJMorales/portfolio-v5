@@ -9,11 +9,15 @@
 
   /* ---- title: split into per-letter spans for a flip-clock style reveal. Pure DOM setup -
      the actual animation is a CSS transition keyed off .stackcard.in, so it plays once on
-     scroll-entrance and is never touched by hover or by the image's cursor tilt. ---- */
+     scroll-entrance and is never touched by hover or by the image's cursor tilt. The arrow
+     is pulled out first and reinserted untouched, so it's never absorbed into the letters. ---- */
   cards.forEach(function(card){
     var title = card.querySelector('.sc-title'); if (!title) return;
+    var arrow = title.querySelector('.sc-arrow');
+    if (arrow) arrow.parentNode.removeChild(arrow);
     var text = title.textContent;
     title.textContent = '';
+    if (arrow) title.appendChild(arrow);
     var words = text.split(' '), n = 0;
     words.forEach(function(word, wi){
       var wordWrap = document.createElement('span');
@@ -33,27 +37,32 @@
     });
   });
 
-  /* ---- reveal: fade + rise as each card scrolls into view (also triggers the title flip) ---- */
+  /* ---- reveal: fade + rise as each card scrolls into view (also triggers the title flip).
+     Threshold-based (not just a rootMargin nudge) so a card has to be genuinely, visibly in
+     the viewport before it fires - it won't fire pre-emptively for cards already sitting
+     near the fold when the page loads. ---- */
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
       });
-    }, { rootMargin: '0px 0px -8% 0px' });
+    }, { threshold: 0.2, rootMargin: '0px 0px -5% 0px' });
     cards.forEach(function(c){ io.observe(c); });
   } else {
     cards.forEach(function(c){ c.classList.add('in'); });
   }
 
-  /* ---- cursor tilt: the card frame stays put - only the photo behind the mask tilts in 3D ---- */
+  /* ---- cursor tilt: the card frame stays put - only the photo behind the mask tilts in 3D.
+     Kept deliberately subtle (small angles, generous perspective, modest scale) so the mask
+     never reveals the image's edge and the effect reads as refined rather than showy. ---- */
   if (!reduced && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
     cards.forEach(function(card){
       var img = card.querySelector('.sc-media img'); if (!img) return;
       card.addEventListener('mousemove', function(e){
         var r = img.getBoundingClientRect();
         var px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
-        var rx = (0.5 - py) * 10, ry = (px - 0.5) * 14;
-        img.style.transform = 'perspective(700px) scale(1.12) rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
+        var rx = (0.5 - py) * 4, ry = (px - 0.5) * 6;
+        img.style.transform = 'perspective(1200px) scale(1.08) rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
       });
       card.addEventListener('mouseleave', function(){ img.style.transform = ''; });
     });
