@@ -7,7 +7,33 @@
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---- reveal: fade + rise as each card scrolls into view ---- */
+  /* ---- title: split into per-letter spans for a flip-clock style reveal. Pure DOM setup -
+     the actual animation is a CSS transition keyed off .stackcard.in, so it plays once on
+     scroll-entrance and is never touched by hover or by the image's cursor tilt. ---- */
+  cards.forEach(function(card){
+    var title = card.querySelector('.sc-title'); if (!title) return;
+    var text = title.textContent;
+    title.textContent = '';
+    var words = text.split(' '), n = 0;
+    words.forEach(function(word, wi){
+      var wordWrap = document.createElement('span');
+      wordWrap.style.display = 'inline-block';
+      word.split('').forEach(function(ch){
+        var wrap = document.createElement('span');
+        wrap.className = 'tchar';
+        var inner = document.createElement('span');
+        inner.textContent = ch;
+        inner.style.transitionDelay = (n * 0.02) + 's';
+        n++;
+        wrap.appendChild(inner);
+        wordWrap.appendChild(wrap);
+      });
+      title.appendChild(wordWrap);
+      if (wi < words.length - 1) title.appendChild(document.createTextNode(' '));
+    });
+  });
+
+  /* ---- reveal: fade + rise as each card scrolls into view (also triggers the title flip) ---- */
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
@@ -19,18 +45,17 @@
     cards.forEach(function(c){ c.classList.add('in'); });
   }
 
-  /* ---- cursor tilt + glow: the card leans toward the pointer and a soft light follows it ---- */
+  /* ---- cursor tilt: the card frame stays put - only the photo behind the mask tilts in 3D ---- */
   if (!reduced && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
     cards.forEach(function(card){
+      var img = card.querySelector('.sc-media img'); if (!img) return;
       card.addEventListener('mousemove', function(e){
-        var r = card.getBoundingClientRect();
+        var r = img.getBoundingClientRect();
         var px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
-        var rx = (0.5 - py) * 9, ry = (px - 0.5) * 11;
-        card.style.transform = 'perspective(900px) rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg) translateZ(0) scale(1.015)';
-        card.style.setProperty('--gx', (px * 100).toFixed(1) + '%');
-        card.style.setProperty('--gy', (py * 100).toFixed(1) + '%');
+        var rx = (0.5 - py) * 10, ry = (px - 0.5) * 14;
+        img.style.transform = 'perspective(700px) scale(1.12) rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
       });
-      card.addEventListener('mouseleave', function(){ card.style.transform = ''; });
+      card.addEventListener('mouseleave', function(){ img.style.transform = ''; });
     });
   }
 

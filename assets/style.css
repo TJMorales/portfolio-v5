@@ -633,34 +633,29 @@ html.xfading.xfaded::before{opacity:0}
 .stackgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,4vw,56px)}
 @media(max-width:760px){.stackgrid{grid-template-columns:1fr}}
 
+/* the card frame itself never moves - only the photo behind the mask tilts in 3D */
 .stackcard{
-  position:relative;display:block;border-radius:16px;overflow:hidden;background:var(--paper);
-  border:1px solid var(--ink-12);
-  opacity:0;transform:translateY(36px);
-  transition:opacity .8s var(--ease),transform .35s var(--ease),box-shadow .5s var(--ease),border-color .5s var(--ease);
-  will-change:transform;
+  position:relative;display:block;border-radius:16px;background:var(--paper);
+  opacity:0;transform:translateY(46px) scale(.97);
+  transition:opacity .9s var(--ease),transform .9s var(--ease),box-shadow .5s var(--ease);
 }
-.stackcard.in{opacity:1}
-.stackcard.in:not(:hover):not(:focus-visible){transform:none}
-.stackgrid>.stackcard:nth-child(2n){transition-delay:.1s}
+.stackcard.in{opacity:1;transform:none}
+.stackgrid>.stackcard:nth-child(2n){transition-delay:.12s}
 .stackgrid>.stackcard.in{transition-delay:0s}
 .stackcard:hover,.stackcard:focus-visible{
-  box-shadow:0 30px 64px -26px rgba(16,16,16,.35);border-color:color-mix(in srgb,var(--c) 60%,var(--ink-12));
+  box-shadow:0 30px 64px -26px rgba(16,16,16,.35);
 }
-.sc-glow{
-  position:absolute;inset:0;z-index:5;pointer-events:none;opacity:0;
-  background:radial-gradient(280px circle at var(--gx,50%) var(--gy,50%),color-mix(in srgb,var(--steel-soft) 45%,transparent),transparent 72%);
-  mix-blend-mode:soft-light;transition:opacity .35s var(--ease);
-}
-.stackcard:hover .sc-glow,.stackcard:focus-visible .sc-glow{opacity:1}
-@media(hover:none),(pointer:coarse){.stackcard{transform:none!important}.sc-glow{display:none}}
 
-.sc-media{position:relative;aspect-ratio:4/3.1;overflow:hidden;background:var(--ink)}
+.sc-media{
+  position:relative;aspect-ratio:4/3.1;overflow:hidden;background:var(--ink);
+  border-radius:16px 16px 0 0;perspective:700px;
+}
 .sc-media img{
   width:100%;height:100%;object-fit:cover;object-position:center 20%;
-  transform:scale(1.03);transition:transform .8s var(--ease);
+  transform:scale(1.03);transition:transform .5s var(--ease);
 }
-.stackcard:hover .sc-media img,.stackcard:focus-visible .sc-media img{transform:scale(1.12)}
+@media(hover:none),(pointer:coarse){.sc-media img{transform:none!important;transition:none}}
+
 .sc-num{
   position:absolute;top:16px;right:16px;z-index:1;
   padding:6px 13px;border-radius:100px;background:rgba(8,8,10,.55);backdrop-filter:blur(6px);
@@ -669,17 +664,35 @@ html.xfading.xfaded::before{opacity:0}
 .sc-num i{font-style:normal;color:rgba(255,255,255,.55)}
 
 .sc-body{padding:clamp(20px,2.4vw,30px)}
-.sc-sector{
-  display:inline-flex;align-items:center;gap:10px;margin-bottom:12px;
-  font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--gold);
+.sc-tags{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;line-height:1.5;
+  color:var(--gold);margin-bottom:12px;
 }
-.sc-sector::before{content:'';width:18px;height:1px;background:var(--gold)}
+
+/* line 2: an arrow that eases in from the left of the title, hover-only, independent of
+   the card frame and the image tilt - a pure affordance cue */
+.sc-line2{display:flex;align-items:baseline;gap:10px}
+.sc-arrow{
+  display:inline-block;font-family:var(--display);font-weight:800;
+  font-size:clamp(18px,1.9vw,26px);color:var(--gold);
+  opacity:0;transform:translateX(-12px);
+  transition:opacity .35s var(--ease),transform .35s var(--ease);
+}
+.stackcard:hover .sc-arrow,.stackcard:focus-visible .sc-arrow{opacity:1;transform:translateX(0)}
+
+/* title: a flip-clock style reveal, letter by letter, tied only to scroll-entrance
+   (.stackcard.in) - never to hover or to the image's cursor tilt */
 .sc-title{
   font-family:var(--display);font-weight:800;text-wrap:balance;
-  font-size:clamp(21px,2.2vw,30px);line-height:1.1;letter-spacing:-.015em;margin-bottom:10px;
+  font-size:clamp(21px,2.2vw,30px);line-height:1.14;letter-spacing:-.015em;
   color:var(--ink);
 }
-.sc-blurb{max-width:44ch;font-size:14.5px;line-height:1.6;color:var(--ink-60);margin-bottom:20px}
+.sc-title .tchar{display:inline-block;overflow:hidden;vertical-align:top}
+.sc-title .tchar>span{display:inline-block;transform:translateY(115%);transition:transform .6s var(--ease)}
+.stackcard.in .sc-title .tchar>span{transform:translateY(0)}
+@media(prefers-reduced-motion:reduce),(hover:none),(pointer:coarse){
+  .sc-title .tchar>span{transform:none;transition:none}
+  .sc-arrow{opacity:1;transform:none}
+}
 
 @media(max-width:480px){.sc-title{font-size:clamp(19px,5vw,24px)}}
