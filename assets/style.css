@@ -397,6 +397,8 @@ footer{
 .move .imgs.layer figure:nth-child(1){width:78%}
 .move .imgs.layer figure:nth-child(2){position:absolute;right:0;bottom:-10%;width:52%}
 .move .imgs.layer figure:nth-child(2) img{outline:5px solid var(--paper);border-radius:2px}
+.move .imgs.layer.lg figure:nth-child(1){width:94%}
+.move .imgs.layer.lg figure:nth-child(2){width:58%;bottom:-20%}
 .move .imgs.artifact img{width:auto;max-width:100%;height:auto;max-height:82vh;display:block;margin:0 auto}
 .move .imgs.big img,.move .imgs.big video{width:110%;max-width:none;margin-left:-5%}
 .move .imgs.small img{width:90%;margin:0 auto}
@@ -437,6 +439,8 @@ footer{
   .move .imgs,.move:nth-of-type(even) .imgs{order:2}
   .move .imgs.layer figure:nth-child(1){width:90%}
   .move .imgs.layer figure:nth-child(2){position:static;width:64%;margin:-8% 0 0 auto}
+  .move .imgs.layer.lg figure:nth-child(1){width:100%}
+  .move .imgs.layer.lg figure:nth-child(2){width:74%}
   .move .imgs.big img,.move .imgs.small img,.move .imgs.big video,.move .imgs.small video{width:100%;margin:0}
 }
 
