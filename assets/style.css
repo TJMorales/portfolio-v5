@@ -399,6 +399,10 @@ footer{
 .move .imgs.layer figure:nth-child(2) img{outline:5px solid var(--paper);border-radius:2px}
 .move .imgs.layer.lg figure:nth-child(1){width:94%}
 .move .imgs.layer.lg figure:nth-child(2){width:58%;bottom:-20%}
+/* Move 01's calendar pair is proportioned differently (the list-view crop is taller
+   relative to its width) than Move 03's video/photo pair, so the shared .lg overlap
+   numbers overlapped far more here - tuned separately to land at a similar ~110px peek */
+.move:nth-of-type(1) .imgs.layer.lg figure:nth-child(2){width:46%;bottom:-42%}
 .move .imgs.artifact img{width:auto;max-width:100%;height:auto;max-height:82vh;display:block;margin:0 auto}
 .move .imgs.big img,.move .imgs.big video{width:110%;max-width:none;margin-left:-5%}
 .move .imgs.small img{width:90%;margin:0 auto}
