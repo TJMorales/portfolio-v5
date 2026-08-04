@@ -667,26 +667,31 @@ html.xfading.xfaded::before{opacity:0}
 }
 
 /* title: a flip-clock style reveal, letter by letter, tied only to scroll-entrance
-   (.stackcard.in) - never to hover or to the image's cursor tilt. The arrow is positioned
-   out-of-flow so it never shifts the title's own left edge; it slides in on hover only. */
+   (.stackcard.in) - never to hover or to the image's cursor tilt. The arrow sits in normal
+   flow at zero width, so at rest the title lines up flush with the tags line above it; on
+   hover it expands open and genuinely pushes the title text over. */
 .sc-title{
-  position:relative;
   font-family:var(--display);font-weight:800;text-wrap:balance;
   font-size:clamp(28px,3vw,40px);line-height:1.08;letter-spacing:-.015em;
   color:var(--ink);
 }
 .sc-arrow{
-  position:absolute;left:0;top:.1em;z-index:-1;
-  display:inline-block;font-weight:800;color:var(--blue-ink);
-  opacity:0;transform:translateX(-16px);
-  transition:opacity .4s var(--ease),transform .4s var(--ease);
+  display:inline-block;overflow:hidden;vertical-align:top;
+  width:0;margin-right:0;opacity:0;
+  font-weight:800;color:var(--blue-ink);
+  transition:width .4s var(--ease),margin-right .4s var(--ease),opacity .3s var(--ease);
 }
-.stackcard:hover .sc-arrow,.stackcard:focus-visible .sc-arrow{opacity:1;transform:translateX(-26px)}
+.stackcard:hover .sc-arrow,.stackcard:focus-visible .sc-arrow{
+  width:1.05em;margin-right:.28em;opacity:1;
+}
 .sc-title .tchar{display:inline-block;overflow:hidden;vertical-align:top}
 .sc-title .tchar>span{display:inline-block;transform:translateY(115%);transition:transform .6s var(--ease)}
 .stackcard.in .sc-title .tchar>span{transform:translateY(0)}
 @media(prefers-reduced-motion:reduce),(hover:none),(pointer:coarse){
   .sc-title .tchar>span{transform:none;transition:none}
+}
+@media(hover:none),(pointer:coarse){
+  .sc-arrow{width:1.05em;margin-right:.28em;opacity:1}
 }
 
 @media(max-width:480px){.sc-title{font-size:clamp(23px,7vw,30px)}}
