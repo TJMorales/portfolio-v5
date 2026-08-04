@@ -431,7 +431,6 @@ footer{
 .move.full .showcase.nat{align-items:flex-start;margin:0 calc(var(--gutter) * -0.6)}
 .move.full .showcase.nat figure{aspect-ratio:auto;overflow:hidden}
 .move.full .showcase.nat figure img,.move.full .showcase.nat figure video{width:100%;height:auto;object-fit:contain}
-.move.full .showcase.nat figure:hover{transform:scale(1.32)}
 @media(max-width:860px){
   .move.full .showcase.nat{margin:0}
   .move.full .showcase{flex-direction:column;gap:18px}
