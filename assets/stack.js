@@ -19,6 +19,21 @@
     cards.forEach(function(c){ c.classList.add('in'); });
   }
 
+  /* ---- cursor tilt + glow: the card leans toward the pointer and a soft light follows it ---- */
+  if (!reduced && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+    cards.forEach(function(card){
+      card.addEventListener('mousemove', function(e){
+        var r = card.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+        var rx = (0.5 - py) * 9, ry = (px - 0.5) * 11;
+        card.style.transform = 'perspective(900px) rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg) translateZ(0) scale(1.015)';
+        card.style.setProperty('--gx', (px * 100).toFixed(1) + '%');
+        card.style.setProperty('--gy', (py * 100).toFixed(1) + '%');
+      });
+      card.addEventListener('mouseleave', function(){ card.style.transform = ''; });
+    });
+  }
+
   /* ---- card -> destination page: the accent expands from the card, then fades in ---- */
   var going = false;
   cards.forEach(function(card){

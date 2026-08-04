@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/style.css?v=1785800268" />
+<link rel="stylesheet" href="assets/style.css?v=1785815352" />
 <script>document.documentElement.classList.add("loading");setTimeout(function(){document.documentElement.classList.remove("loading")},6000);</script>
 <script>try{var t=localStorage.getItem("tjm-theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 <script>try{var c=sessionStorage.getItem("tjm-xfade");if(c){document.documentElement.style.setProperty("--xfade",c);document.documentElement.classList.add("xfading");sessionStorage.removeItem("tjm-xfade")}}catch(e){}</script>
@@ -24,6 +24,11 @@
 <div class="progress" aria-hidden="true"></div>
 <div class="rail" aria-hidden="true">Intro</div>
 <div class="dot" aria-hidden="true"></div>
+
+<div class="flowfield" aria-hidden="true">
+  <span class="forb forb-a"></span>
+  <span class="forb forb-b"></span>
+</div>
 
 <nav>
   <a class="mark" href="#top" aria-label="Tony Joe Morales, home">TJM</a>
@@ -54,6 +59,7 @@
 
   <div class="stackgrid">
     <a class="stackcard" href="band-of-the-hills/" style="--c:var(--lime-ink)">
+      <span class="sc-glow" aria-hidden="true"></span>
       <div class="sc-media">
         <img src="assets/card-band.jpg" alt="Band of the Hills homepage" loading="lazy">
         <span class="sc-num">01 <i>/ 07</i></span>
@@ -67,6 +73,7 @@
     </a>
 
     <a class="stackcard" href="vrdeca/" style="--c:var(--steel-soft)">
+      <span class="sc-glow" aria-hidden="true"></span>
       <div class="sc-media">
         <img src="assets/card-vrdeca.jpg" alt="Vista Ridge DECA homepage" loading="lazy">
         <span class="sc-num">02 <i>/ 07</i></span>
@@ -80,6 +87,7 @@
     </a>
 
     <a class="stackcard" href="umb-graduate/" style="--c:var(--steel-soft)">
+      <span class="sc-glow" aria-hidden="true"></span>
       <div class="sc-media">
         <img src="assets/card-umb.jpg" alt="UMB School of Graduate Studies homepage" loading="lazy">
         <span class="sc-num">03 <i>/ 07</i></span>
@@ -93,6 +101,7 @@
     </a>
 
     <a class="stackcard" href="one-house/" style="--c:var(--steel-soft)">
+      <span class="sc-glow" aria-hidden="true"></span>
       <div class="sc-media">
         <img src="assets/card-one-house.jpg" alt="One House At A Time homepage" loading="lazy">
         <span class="sc-num">04 <i>/ 07</i></span>
@@ -106,6 +115,7 @@
     </a>
 
     <a class="stackcard" href="baltimore-collegetown/" style="--c:var(--rose)">
+      <span class="sc-glow" aria-hidden="true"></span>
       <div class="sc-media">
         <img src="assets/card-collegetown.jpg" alt="Baltimore Collegetown homepage" loading="lazy">
         <span class="sc-num">05 <i>/ 07</i></span>
@@ -119,6 +129,7 @@
     </a>
 
     <a class="stackcard" href="cccc/" style="--c:var(--steel-soft)">
+      <span class="sc-glow" aria-hidden="true"></span>
       <div class="sc-media">
         <img src="assets/card-cccc.jpg" alt="Central Carolina Community College homepage" loading="lazy">
         <span class="sc-num">06 <i>/ 07</i></span>
@@ -132,6 +143,7 @@
     </a>
 
     <a class="stackcard" href="jqi-rqs/" style="--c:var(--amber-ink)">
+      <span class="sc-glow" aria-hidden="true"></span>
       <div class="sc-media">
         <img src="assets/card-jqi-rqs.jpg" alt="JQI and RQS homepage" loading="lazy">
         <span class="sc-num">07 <i>/ 07</i></span>
@@ -165,7 +177,7 @@
   </ul>
 </section>
 
-<section class="about-intro reveal fly">
+<section class="about-intro reveal fly" id="about">
   <div class="collage" aria-hidden="true">
     <span style="left:-6%;top:-9%;width:35%;height:50%;--r:-5deg;--d:0s;z-index:3"><img src="assets/card-band.jpg" alt=""></span>
     <span style="left:20%;top:-11%;width:33%;height:47%;--r:4deg;--d:.05s;z-index:2"><img src="assets/card-one-house.jpg" alt=""></span>
@@ -191,7 +203,7 @@
   </div>
 </section>
 
-<section class="reveal" data-rail="Words">
+<section class="reveal" id="words" data-rail="Words">
   <div class="kicker"><span>What colleagues say</span></div>
   <div class="quotes">
     <div class="q-viewport">
@@ -240,8 +252,9 @@
 
 <a class="totop" id="totop" href="#top" aria-label="Back to top">&uarr;</a>
 <script src="assets/main.js?v=1785799069"></script>
-<script src="assets/vortex.js?v=1784519322"></script>
-<script src="assets/stack.js?v=1785800268" defer></script>
+<script src="assets/vortex.js?v=1785801000"></script>
+<script src="assets/flowfield.js?v=1785801000" defer></script>
+<script src="assets/stack.js?v=1785815352" defer></script>
 <script src="assets/quotes.js" defer></script>
 </body>
 </html>

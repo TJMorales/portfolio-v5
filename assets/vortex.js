@@ -83,6 +83,21 @@
     if (t0===null) t0 = t;
     var el = t - t0, e = forming ? ease(Math.min(1, el/FORM)) : 1;
     ctx.clearRect(0,0,W,H);
+
+    /* soft glow core: the same cursor-following point as the particles, lit from within,
+       brighter while the cursor is actively moving through the hero */
+    var glowR = R * (1.5 + energy*0.5);
+    var glowA = (forming ? e*0.5 : 0.34 + energy*0.4);
+    var grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, glowR);
+    grad.addColorStop(0, 'rgba(143,166,196,' + glowA + ')');
+    grad.addColorStop(0.5, 'rgba(94,119,148,' + (glowA*0.35) + ')');
+    grad.addColorStop(1, 'rgba(94,119,148,0)');
+    var prevOp = ctx.globalCompositeOperation;
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.fillStyle = grad;
+    ctx.beginPath(); ctx.arc(cx, cy, glowR, 0, 6.283); ctx.fill();
+    ctx.globalCompositeOperation = prevOp;
+
     for (var i=0;i<parts.length;i++){
       var p = parts[i], cr = p.r, cs = p.size, ca = p.alpha, sb = 1 + boost*9 + energy*0.6;
       if (forming){
