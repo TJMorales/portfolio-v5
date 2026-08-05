@@ -403,6 +403,7 @@ footer{
    relative to its width) than Move 03's video/photo pair, so the shared .lg overlap
    numbers overlapped far more here - tuned separately to land at a similar ~110px peek */
 .move:nth-of-type(1) .imgs.layer.lg figure:nth-child(2){width:46%;bottom:-42%}
+.move:nth-of-type(4) .imgs.layer.lg figure:nth-child(2){bottom:-33%}
 .move .imgs.artifact img{width:auto;max-width:100%;height:auto;max-height:82vh;display:block;margin:0 auto}
 .move .imgs.big img,.move .imgs.big video{width:110%;max-width:none;margin-left:-5%}
 .move .imgs.small img{width:90%;margin:0 auto}
@@ -427,7 +428,7 @@ footer{
 .move.full .showcase figure{transform-origin:center center}
 .move.full .showcase figure:first-child{transform-origin:left center}
 .move.full .showcase figure:last-child{transform-origin:right center}
-.move.full .showcase figure:hover{z-index:20;position:relative;transform:scale(1.32);box-shadow:0 60px 110px -24px rgba(16,16,16,.55)}
+.move.full .showcase:not(.nat) figure:hover{z-index:20;position:relative;transform:scale(1.32);box-shadow:0 60px 110px -24px rgba(16,16,16,.55)}
 .move.full .showcase.nat{align-items:flex-start;margin:0 calc(var(--gutter) * -0.6)}
 .move.full .showcase.nat figure{aspect-ratio:auto;overflow:hidden}
 .move.full .showcase.nat figure img,.move.full .showcase.nat figure video{width:100%;height:auto;object-fit:contain}
