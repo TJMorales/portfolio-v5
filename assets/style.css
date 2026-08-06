@@ -192,7 +192,7 @@ section{padding:clamp(80px,14vh,160px) var(--gutter)}
 .clients .csec{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
   color:var(--ink-30);opacity:0;transform:translateX(10px);white-space:nowrap;flex:none;
   transition:opacity .4s var(--ease),transform .4s var(--ease),color .35s var(--ease)}
-.clients .csec::after{content:' \2197'}
+.clients .csec::after{content:' \2197\FE0E'}
 .clients a:hover,.clients a:focus-visible{padding-left:clamp(10px,1.5vw,24px)}
 .clients a:hover .cname,.clients a:focus-visible .cname{color:var(--hc)}
 .clients a:hover .csec,.clients a:focus-visible .csec{opacity:1;transform:none;color:var(--ink-60)}
